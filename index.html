@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read a Book — A Practical Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #2563eb;
+    --highlight-bg: #eff6ff;
+    --callout-yellow: #fefce8;
+    --callout-yellow-border: #fbbf24;
+    --callout-blue: #eff6ff;
+    --callout-blue-border: #93c5fd;
+    --callout-red: #fef2f2;
+    --callout-red-border: #fca5a5;
+    --callout-green: #f0fdf4;
+    --callout-green-border: #86efac;
+    --callout-gray: #f9fafb;
+    --callout-gray-border: #d1d5db;
+    --tag-bg: #f3f4f6;
+    --divider: #f3f4f6;
+    --sidebar: #f9fafb;
+    --code-bg: #f1f5f9;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* LAYOUT */
+  .page-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+  }
+
+  /* COVER / HEADER */
+  .cover {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cover-emoji {
+    font-size: 56px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .cover-title {
+    font-family: 'Lora', serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -0.3px;
+  }
+
+  .cover-subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+
+  .cover-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  /* PROPERTIES TABLE (Notion style) */
+  .properties {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 4px 0;
+    font-size: 14px;
+    margin-bottom: 40px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prop-key {
+    color: var(--muted);
+    font-weight: 500;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .prop-val {
+    color: var(--text);
+    padding: 4px 8px;
+    font-weight: 400;
+  }
+
+  /* TABLE OF CONTENTS */
+  .toc {
+    background: var(--sidebar);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 48px;
+  }
+
+  .toc-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .toc ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .toc li {
+    margin-bottom: 6px;
+  }
+
+  .toc a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .toc a:hover { color: var(--accent); }
+
+  .toc .toc-sub {
+    padding-left: 20px;
+    margin-top: 4px;
+  }
+
+  .toc .toc-sub li {
+    margin-bottom: 3px;
+  }
+
+  .toc .toc-sub a {
+    font-size: 13px;
+  }
+
+  /* HEADINGS */
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 52px 0 16px;
+    color: var(--text);
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+    scroll-margin-top: 20px;
+  }
+
+  h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 12px;
+    color: var(--text);
+    line-height: 1.35;
+    scroll-margin-top: 20px;
+  }
+
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 28px 0 8px;
+    color: var(--text);
+    line-height: 1.4;
+    scroll-margin-top: 20px;
+  }
+
+  /* BODY TEXT */
+  p {
+    margin-bottom: 16px;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  strong { font-weight: 600; }
+
+  em { font-style: italic; color: #374151; }
+
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 20px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .callout-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .callout-body { flex: 1; }
+
+  .callout-body strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+
+  .callout.yellow {
+    background: var(--callout-yellow);
+    border-left: 3px solid var(--callout-yellow-border);
+  }
+
+  .callout.blue {
+    background: var(--callout-blue);
+    border-left: 3px solid var(--callout-blue-border);
+  }
+
+  .callout.red {
+    background: var(--callout-red);
+    border-left: 3px solid var(--callout-red-border);
+  }
+
+  .callout.green {
+    background: var(--callout-green);
+    border-left: 3px solid var(--callout-green-border);
+  }
+
+  .callout.gray {
+    background: var(--callout-gray);
+    border-left: 3px solid var(--callout-gray-border);
+  }
+
+  /* QUOTE */
+  blockquote {
+    border-left: 3px solid var(--border);
+    padding: 4px 0 4px 20px;
+    margin: 20px 0;
+    color: var(--muted);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  blockquote cite {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--divider);
+    margin: 40px 0;
+  }
+
+  /* LEVEL CARDS */
+  .level-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .level-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .level-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .level-card.l1::before { background: #94a3b8; }
+  .level-card.l2::before { background: #60a5fa; }
+  .level-card.l3::before { background: #4ade80; }
+  .level-card.l4::before { background: #f59e0b; }
+
+  .level-num {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .level-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .level-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .level-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-top: 8px;
+  }
+
+  .badge-gray { background: #f1f5f9; color: #64748b; }
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-green { background: #dcfce7; color: #16a34a; }
+  .badge-amber { background: #fef3c7; color: #b45309; }
+
+  /* RULE BLOCKS */
+  .rule-block {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 16px 0;
+    overflow: hidden;
+  }
+
+  .rule-header {
+    padding: 12px 18px;
+    background: var(--tag-bg);
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .rule-body {
+    padding: 16px 18px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .rule-body p { margin-bottom: 10px; font-size: 15px; }
+  .rule-body p:last-child { margin-bottom: 0; }
+
+  /* STEPS */
+  .steps {
+    margin: 20px 0;
+    counter-reset: step;
+  }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--text);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .step-content { flex: 1; }
+
+  .step-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--tag-bg);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--divider);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tr:nth-child(even) td { background: #fafafa; }
+
+  /* SKEPTIC BOX */
+  .skeptic {
+    background: #fdf4ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 24px 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .skeptic-title {
+    font-weight: 700;
+    color: #7c3aed;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .skeptic p { margin-bottom: 8px; color: #4b5563; }
+  .skeptic p:last-child { margin-bottom: 0; }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .checklist li::before {
+    content: '☐';
+    font-size: 16px;
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* INLINE CODE */
+  code {
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    color: #be185d;
+  }
+
+  /* SECTION BREADCRUMB */
+  .breadcrumb {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* TOGGLE (simulated) */
+  .toggle-wrapper {
+    margin: 12px 0;
+  }
+
+  details {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  summary {
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--sidebar);
+    user-select: none;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::before {
+    content: '▶';
+    font-size: 9px;
+    transition: transform 0.2s;
+    color: var(--muted);
+  }
+
+  details[open] summary::before { transform: rotate(90deg); }
+
+  .toggle-content {
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* BADGE INLINE */
+  .badge-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+
+  /* VISUAL PYRAMID */
+  .pyramid-wrapper {
+    margin: 28px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .pyramid-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 560px;
+    margin-bottom: 4px;
+  }
+
+  .pyramid-bar {
+    height: 44px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    flex: 1;
+    transition: transform 0.2s;
+  }
+
+  .pyramid-bar:hover { transform: translateX(3px); }
+
+  .bar-l1 { background: #94a3b8; width: 40%; }
+  .bar-l2 { background: #60a5fa; width: 60%; }
+  .bar-l3 { background: #34d399; width: 80%; }
+  .bar-l4 { background: #fbbf24; color: #1a1a1a; width: 100%; }
+
+  .pyramid-label {
+    font-size: 12px;
+    color: var(--muted);
+    width: 100px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* FOOTNOTE */
+  .footnote {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .footnote p { margin-bottom: 8px; }
+
+  /* READING TRACKER */
+  .tracker {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+
+  .tracker-header {
+    padding: 12px 18px;
+    background: var(--tag-bg);
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .tracker-row {
+    display: flex;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--divider);
+    gap: 12px;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .tracker-row:last-child { border-bottom: none; }
+
+  .tracker-check {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .tracker-label { flex: 1; font-weight: 500; }
+  .tracker-note { color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page-wrapper { padding: 40px 20px 80px; }
+    .cover-title { font-size: 26px; }
+    .level-grid { grid-template-columns: 1fr; }
+    .pyramid-row { max-width: 100%; }
+    .pyramid-label { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- COVER -->
+  <div class="cover">
+    <span class="cover-emoji">📖</span>
+    <h1 class="cover-title">How to Read a Book<br>(The Right Way)</h1>
+    <p class="cover-subtitle">
+      You probably think you already know how to read. You learned in school. You can get through a book. But getting through a book and actually getting something from it — those are completely different things. This guide will change how you read, permanently.
+    </p>
+    <div class="cover-tags">
+      <span class="tag">Learning</span>
+      <span class="tag">Books</span>
+      <span class="tag">Self-Education</span>
+      <span class="tag">Critical Thinking</span>
+    </div>
+  </div>
+
+  <!-- PROPERTIES -->
+  <div class="properties">
+    <div class="prop-key">📚 Based On</div>
+    <div class="prop-val">How to Read a Book — Adler & Van Doren (1940, revised 1972)</div>
+    <div class="prop-key">🎯 Difficulty</div>
+    <div class="prop-val">Beginner → Advanced</div>
+    <div class="prop-key">⏱️ Read Time</div>
+    <div class="prop-val">~12 minutes</div>
+    <div class="prop-key">✅ You'll Get</div>
+    <div class="prop-val">A system you can use on any book, starting today</div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">On This Page</div>
+    <ul>
+      <li><a href="#myth">🧱 The Myth: You Already Know How to Read</a></li>
+      <li><a href="#levels">📊 The 4 Levels of Reading (Overview)</a></li>
+      <li><a href="#level1">Level 1 — Elementary</a></li>
+      <li><a href="#level2">Level 2 — Inspectional</a></li>
+      <li><a href="#level3">Level 3 — Analytical</a>
+        <ul class="toc-sub">
+          <li><a href="#stage1">Stage 1: Understand the Structure</a></li>
+          <li><a href="#stage2">Stage 2: Interpret the Content</a></li>
+          <li><a href="#stage3">Stage 3: Criticise Fairly</a></li>
+        </ul>
+      </li>
+      <li><a href="#level4">Level 4 — Syntopical</a></li>
+      <li><a href="#checklist">✅ Quick-Start Checklist</a></li>
+      <li><a href="#skeptic-final">🤔 But Does Any of This Actually Work?</a></li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 1: THE MYTH -->
+  <div id="myth"></div>
+  <div class="breadcrumb">📖 The Problem</div>
+  <h1>The Myth: "I Already Know How to Read"</h1>
+
+  <p>Here's the uncomfortable truth: most of us were taught how to <em>decode</em> words. That's elementary school reading. But nobody ever taught us what to do with a book after we can decode it.</p>
+
+  <p>In 1940, philosopher Mortimer Adler wrote a book called <em>How to Read a Book</em>. It became an instant bestseller and has been translated into dozens of languages. The revised 1972 edition (co-written with Charles Van Doren) is still in print today.</p>
+
+  <div class="callout yellow">
+    <span class="callout-icon">⚠️</span>
+    <div class="callout-body">
+      <strong>Common Mistake #1</strong>
+      Most people read when they're tired — at night, in bed, half-asleep. Their brain is running on empty. The result? Passive reading. You move your eyes across the page, you finish the chapter, and you remember almost nothing.
+    </div>
+  </div>
+
+  <p>The book's central argument is simple but ignored by almost everyone:</p>
+
+  <blockquote>
+    Reading is not a passive activity. It's one of the most active mental exercises you can do. The moment you treat it as passive — like watching TV — you stop actually reading.
+    <cite>— Mortimer J. Adler, How to Read a Book</cite>
+  </blockquote>
+
+  <p><strong>Practical implication:</strong> Read when your brain is fresh. For most people, that's morning. Don't wait until you're tired to "squeeze in" some reading. Tired reading = wasted time.</p>
+
+  <div class="callout blue">
+    <span class="callout-icon">💡</span>
+    <div class="callout-body">
+      <strong>Before We Go Further</strong>
+      Not every book needs to be read at every level. A thriller novel? Read for fun — no system needed. But if you're reading to genuinely learn something, this framework changes everything.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 2: THE 4 LEVELS -->
+  <div id="levels"></div>
+  <div class="breadcrumb">📊 Overview</div>
+  <h1>The 4 Levels of Reading</h1>
+
+  <p>Think of these as reading speeds for different goals — not levels of intelligence, but levels of depth and intention.</p>
+
+  <div class="pyramid-wrapper">
+    <div class="pyramid-row">
+      <div class="pyramid-label">Highest Mastery</div>
+      <div class="pyramid-bar bar-l4">🏆 Level 4 — Syntopical</div>
+    </div>
+    <div class="pyramid-row">
+      <div class="pyramid-label">Deep Reading</div>
+      <div class="pyramid-bar bar-l3">🔬 Level 3 — Analytical</div>
+    </div>
+    <div class="pyramid-row">
+      <div class="pyramid-label">Smart Skimming</div>
+      <div class="pyramid-bar bar-l2">🔍 Level 2 — Inspectional</div>
+    </div>
+    <div class="pyramid-row">
+      <div class="pyramid-label">Where We All Start</div>
+      <div class="pyramid-bar bar-l1">📝 Level 1 — Elementary</div>
+    </div>
+  </div>
+
+  <div class="level-grid">
+    <div class="level-card l1">
+      <div class="level-num">Level 01</div>
+      <div class="level-name">Elementary</div>
+      <div class="level-desc">Decode words and sentences. This is what school taught you.</div>
+      <span class="level-badge badge-gray">Everyone can do this</span>
+    </div>
+    <div class="level-card l2">
+      <div class="level-num">Level 02</div>
+      <div class="level-name">Inspectional</div>
+      <div class="level-desc">Quickly understand what a book is about. Pre-reading + skimming.</div>
+      <span class="level-badge badge-blue">Most stop here</span>
+    </div>
+    <div class="level-card l3">
+      <div class="level-num">Level 03</div>
+      <div class="level-name">Analytical</div>
+      <div class="level-desc">Deep engagement — structure, arguments, critique. Real learning.</div>
+      <span class="level-badge badge-green">Where the value is</span>
+    </div>
+    <div class="level-card l4">
+      <div class="level-num">Level 04</div>
+      <div class="level-name">Syntopical</div>
+      <div class="level-desc">Read multiple books on one topic and form your own view.</div>
+      <span class="level-badge badge-amber">Master-level</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- LEVEL 1 -->
+  <div id="level1"></div>
+  <div class="breadcrumb">📖 Level 1</div>
+  <h1>Elementary Reading — Where Everyone Starts</h1>
+
+  <p>This is what school taught you: recognize words, understand sentences, build vocabulary. It's necessary but not sufficient.</p>
+
+  <p>When you read at this level, you pick up new words or new information. That's it. Nothing wrong with that — it's the foundation. But most people never leave this level, even when reading serious non-fiction books.</p>
+
+  <div class="callout gray">
+    <span class="callout-icon">📌</span>
+    <div class="callout-body">Elementary reading answers: <strong>"What does this sentence say?"</strong> — not "What does the author mean?" or "Is this actually true?"</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- LEVEL 2 -->
+  <div id="level2"></div>
+  <div class="breadcrumb">🔍 Level 2</div>
+  <h1>Inspectional Reading — The Detective's Method</h1>
+
+  <p>Inspectional reading is the level most people have never been explicitly taught. Think of it like a detective scanning a crime scene before diving in — you're looking for structure and clues before committing fully.</p>
+
+  <p>It comes in two forms:</p>
+
+  <h2>Form A: Systematic Skimming (Pre-Reading)</h2>
+  <p>Before you read a book, do this in 10–15 minutes:</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Read the title and subtitle</div>
+        <div class="step-desc">They tell you what the author thinks the book is about. More revealing than you'd expect.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Read the preface / introduction</div>
+        <div class="step-desc">The author explains why they wrote the book and what questions they're trying to answer. <strong>Never skip this.</strong></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Study the Table of Contents</div>
+        <div class="step-desc">It's the skeleton of the book. You'll immediately see how the author organizes their argument.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Check the Index</div>
+        <div class="step-desc">See which topics and names come up most. These are the book's main concepts.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">Dip into a few chapters</div>
+        <div class="step-desc">Read the first and last paragraphs. Flip through randomly. Get a feel for the writing style and depth.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout red">
+    <span class="callout-icon">🚫</span>
+    <div class="callout-body">
+      <strong>The Most Common Mistake</strong>
+      Most readers skip all of this and jump straight to Chapter 1. Then they spend the entire book confused about where the author is going. Don't do this.
+    </div>
+  </div>
+
+  <h2>Form B: Superficial Reading</h2>
+  <p>When you have limited time or want a quick sense of whether a book is worth deeper reading: read it all the way through without stopping. Skip unfamiliar words. Ignore footnotes. Don't look things up. <strong>Just get the big picture first.</strong></p>
+
+  <div class="callout blue">
+    <span class="callout-icon">💡</span>
+    <div class="callout-body">
+      A mature reader knows <strong>when to read fast and when to slow down</strong>. That's the real skill. Fast reading isn't bad — reading everything at the same slow speed is.
+    </div>
+  </div>
+
+  <div class="skeptic">
+    <div class="skeptic-title">🤔 Skeptic's Corner</div>
+    <p>You might be thinking: "Speed reading courses promise I can read 1,000 words per minute. Why doesn't Adler talk about that?"</p>
+    <p>Because research consistently shows that comprehension drops sharply at high speeds. A 2016 study in <em>Psychological Science in the Public Interest</em> reviewed 190+ studies and concluded there is no free lunch — faster reading usually means less understanding. Adler's point isn't to read faster. It's to read the right things at the right speed.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- LEVEL 3 -->
+  <div id="level3"></div>
+  <div class="breadcrumb">🔬 Level 3</div>
+  <h1>Analytical Reading — Where Real Learning Happens</h1>
+
+  <blockquote>
+    "Some books are to be tasted, others to be swallowed, and some few to be chewed and digested."
+    <cite>— Francis Bacon</cite>
+  </blockquote>
+
+  <p>Analytical reading is the chewing and digesting stage. It's deep, active, and it takes time. But it's the only kind of reading that actually changes how you think.</p>
+
+  <p>Adler breaks analytical reading into <strong>3 stages</strong>, each with specific rules:</p>
+
+  <!-- STAGE 1 -->
+  <div id="stage1"></div>
+  <h2>📐 Stage 1 — Understand the Structure</h2>
+  <p>Before you can argue with a book, you have to know what it's actually saying and how it's organized.</p>
+
+  <div class="rule-block">
+    <div class="rule-header">🏷️ Rule 1 — Classify Your Book</div>
+    <div class="rule-body">
+      <p>Know what kind of book you're reading <em>before</em> you start. This shapes everything.</p>
+      <table>
+        <tr>
+          <th>Type</th>
+          <th>What It Is</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td><strong>Fiction</strong></td>
+          <td>Novels, drama, poetry — meant to create an experience</td>
+          <td>Dostoevsky's Crime and Punishment</td>
+        </tr>
+        <tr>
+          <td><strong>Theoretical Non-fiction</strong></td>
+          <td>Explains what is true or how things work</td>
+          <td>Das Kapital (Marx) — explains economic systems</td>
+        </tr>
+        <tr>
+          <td><strong>Practical Non-fiction</strong></td>
+          <td>Tells you what to do and how to do it</td>
+          <td>Communist Manifesto — calls people to action</td>
+        </tr>
+        <tr>
+          <td><strong>Mixed</strong></td>
+          <td>Both theory and practice in one book</td>
+          <td>Spinoza's Ethics — explains reality, then how to live</td>
+        </tr>
+      </table>
+      <p style="margin-top:10px; font-size:14px; color: #6b7280;">Quick method: run inspectional reading first — the title, preface, and TOC usually make the type obvious.</p>
+    </div>
+  </div>
+
+  <div class="rule-block">
+    <div class="rule-header">🏗️ Rule 2 — Understand the Book's Structure</div>
+    <div class="rule-body">
+      <p>After reading, you should be able to summarise the entire book in one or two sentences. Not the details — the core argument. What problem did the author set out to solve? What is their answer?</p>
+      <p>Adler uses the analogy of a house: a good book has rooms (chapters), corridors connecting them, and every part serves the whole. Your job is to understand the floor plan — not just wander from room to room randomly.</p>
+      <p><strong>Try this:</strong> After finishing a chapter, pause and write one sentence: "In this chapter, the author argued that ___."</p>
+    </div>
+  </div>
+
+  <div class="rule-block">
+    <div class="rule-header">🔎 Rule 3 — Identify All the Parts</div>
+    <div class="rule-body">
+      <p>Go deeper than just chapter titles. Understand how each section feeds into the next. Chapter 1 argues X, which sets up the problem that Chapter 4 solves. If you see these connections, you're reading analytically.</p>
+    </div>
+  </div>
+
+  <div class="rule-block">
+    <div class="rule-header">❓ Rule 4 — Find the Author's Questions</div>
+    <div class="rule-body">
+      <p>Every book starts with a question the author wanted to answer. Sometimes they state it directly (look in the preface). Sometimes you have to figure it out.</p>
+      <p>Once you know the question, the book becomes a joy to read — because you know what you're looking for.</p>
+      <div class="callout green" style="margin-top: 12px;">
+        <span class="callout-icon">✅</span>
+        <div class="callout-body">Ask yourself early: "What problem is this author trying to solve? Why did they feel the need to write this?" Write the answer down before Chapter 2.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAGE 2 -->
+  <div id="stage2"></div>
+  <h2>📖 Stage 2 — Interpret the Content</h2>
+  <p>Now you go inside the book and understand exactly what the author is saying — in their terms, not yours.</p>
+
+  <div class="rule-block">
+    <div class="rule-header">🔤 Rule 1 — Come to Terms (Key Words)</div>
+    <div class="rule-body">
+      <p>Every book has keywords the author uses in a specific way. Your job is to find those words and understand exactly how the author defines them.</p>
+      <p>You'll know a keyword when you see it: the author uses it repeatedly, often defines it early, and builds arguments around it.</p>
+      <div class="callout yellow" style="margin-top:12px;">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body">If the author uses the word "freedom" to mean one thing and you read it as another, the entire communication breaks down. You'll think you disagree when you actually just misread.</div>
+      </div>
+      <p style="margin-top: 10px;"><strong>Tip:</strong> Don't stop and grab a dictionary every time you see an unfamiliar word. Finish the paragraph. Context usually reveals the meaning. Then look it up if still unclear.</p>
+    </div>
+  </div>
+
+  <div class="rule-block">
+    <div class="rule-header">📢 Rule 2 — Find the Leading Propositions</div>
+    <div class="rule-body">
+      <p>A proposition is a statement the author is claiming is either true or false. "Education is the most powerful tool to change society" — that's a proposition. The author then has to prove it.</p>
+      <p>Find the 3–5 main propositions in the book. These are the author's core claims. Everything else in the book is either building up to these or defending them.</p>
+    </div>
+  </div>
+
+  <div class="rule-block">
+    <div class="rule-header">🔗 Rule 3 — Understand the Arguments</div>
+    <div class="rule-body">
+      <p>An argument = a claim + the reasons for it. The author doesn't just state things — they provide evidence, examples, logic, and data. Your job is to identify:</p>
+      <ul style="margin: 8px 0 0 16px; font-size: 15px; line-height: 1.8;">
+        <li>What is the claim?</li>
+        <li>What facts/examples does the author use to support it?</li>
+        <li>Does the logic actually hold?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rule-block">
+    <div class="rule-header">🎯 Rule 4 — Which Problems Did the Author Solve?</div>
+    <div class="rule-body">
+      <p>After reading, ask: Did the author actually answer the questions they set out to answer? Fully? Partially? Did they leave some things unanswered — and did they admit it?</p>
+      <p>This is how you measure a book's completeness. Great authors are honest about what they couldn't resolve. That honesty is a sign of intellectual integrity.</p>
+    </div>
+  </div>
+
+  <!-- STAGE 3 -->
+  <div id="stage3"></div>
+  <h2>⚖️ Stage 3 — Criticise Fairly</h2>
+
+  <p>This is the stage most readers skip — or do wrong. You are allowed to disagree with an author. In fact, if you never disagree with anything you read, you're probably not reading critically enough.</p>
+
+  <p>But criticism has rules. It's not about complaining. It's about being honest and precise.</p>
+
+  <h3>General Rules Before You Criticise</h3>
+
+  <div class="callout blue">
+    <span class="callout-icon">📌</span>
+    <div class="callout-body"><strong>Rule 1:</strong> Don't criticise until you have finished and fully understood the book. You can't fairly disagree with something you haven't fully understood. "A book is a serious conversation. The author speaks first. You speak second."</div>
+  </div>
+
+  <div class="callout blue">
+    <span class="callout-icon">📌</span>
+    <div class="callout-body"><strong>Rule 2:</strong> Don't disagree out of ego, stubbornness, or emotion. If your disagreement is just "I don't like this," that's not criticism — that's a reaction. Real criticism requires reasons.</div>
+  </div>
+
+  <div class="callout blue">
+    <span class="callout-icon">📌</span>
+    <div class="callout-body"><strong>Rule 3:</strong> Know the difference between personal opinion and evidence. "This doesn't feel right to me" is not a counter-argument. A counter-argument needs facts, logic, or better evidence.</div>
+  </div>
+
+  <h3>The 4 Valid Criticisms</h3>
+  <p>If you want to say the author is wrong, you need to show one of these:</p>
+
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Criticism Type</th>
+      <th>What It Means</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><strong>Uninformed</strong></td>
+      <td>The author didn't know a key fact that changes their conclusion</td>
+      <td>A 1970s nutrition book that didn't know about gut microbiome research</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Misinformed</strong></td>
+      <td>The author had wrong data or misunderstood a fact</td>
+      <td>Wrong historical dates, bad statistics, debunked studies</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Illogical</strong></td>
+      <td>The facts are correct, but the conclusion doesn't follow</td>
+      <td>"Crime went up after X was legalised, therefore X causes crime" — ignores confounding factors</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Incomplete</strong></td>
+      <td>The book didn't cover important aspects of the topic</td>
+      <td>A business book about Silicon Valley startups that ignores funding privilege</td>
+    </tr>
+  </table>
+
+  <div class="skeptic">
+    <div class="skeptic-title">🤔 Skeptic's Corner</div>
+    <p>Wait — Charles Van Doren, the book's co-author, was involved in a major TV quiz show scandal in the 1950s. He memorised answers in advance and lied about it on national television. Does that undermine the book?</p>
+    <p>Probably not. The ideas in the book — which were largely Adler's framework from 1940 — don't depend on Van Doren's character. Judge arguments on their own merits. (That's actually what Adler would say: evaluate the argument, not the person.)</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- LEVEL 4 -->
+  <div id="level4"></div>
+  <div class="breadcrumb">🏆 Level 4</div>
+  <h1>Syntopical Reading — Mastery Mode</h1>
+
+  <p>This is the highest level. Instead of reading one book on a topic, you read <em>multiple</em> books — and compare, contrast, and form your own independent view.</p>
+
+  <p>This is how academics write dissertations. It's how journalists do investigative reporting. It's how anyone goes from informed to genuinely knowledgeable.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Find the Relevant Passages</div>
+        <div class="step-desc">Don't read every book cover to cover. Use inspectional reading to find the sections in each book that actually address your specific question.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Create a Common Language</div>
+        <div class="step-desc">Different authors use different words for the same concept. Your job is to translate them all into your own terms, so you can compare apples to apples.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Frame Your Key Questions</div>
+        <div class="step-desc">What exactly are you trying to figure out? Write down 3–5 questions. Then see which authors answer them — and how.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Map the Agreements and Disagreements</div>
+        <div class="step-desc">Which authors agree? Where do they disagree? Why? This is where critical thinking really develops — you're seeing the same reality from multiple angles.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">Form Your Own Conclusion</div>
+        <div class="step-desc">After absorbing all views, set aside your biases and come to your own view. The output of syntopical reading is an understanding that exists <em>in no single book</em> — you built it.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <span class="callout-icon">🌟</span>
+    <div class="callout-body">
+      <strong>Real-World Use</strong>
+      Trying to understand a complex topic — nutrition, investing, foreign policy, AI? This is the method. Read 5–8 books on the topic. Compare their arguments. You'll develop a view that most "experts" who only read within their bubble don't have.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHECKLIST -->
+  <div id="checklist"></div>
+  <h1>✅ Your Quick-Start Checklist</h1>
+  <p>Use this every time you pick up a serious non-fiction book:</p>
+
+  <div class="tracker">
+    <div class="tracker-header">Before You Read</div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Read the title, subtitle, back cover</div>
+      <div class="tracker-note">2 min</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Read the preface or introduction fully</div>
+      <div class="tracker-note">5–10 min</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Study the Table of Contents</div>
+      <div class="tracker-note">2 min</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Write down: "What question is this book trying to answer?"</div>
+      <div class="tracker-note">1 min</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Classify: Is this fiction, theoretical, or practical?</div>
+      <div class="tracker-note">1 min</div>
+    </div>
+  </div>
+
+  <div class="tracker">
+    <div class="tracker-header">While Reading</div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Underline or note the key terms (words used repeatedly)</div>
+      <div class="tracker-note">Ongoing</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Write one sentence per chapter: "This chapter argues that ___"</div>
+      <div class="tracker-note">After each chapter</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Track the main propositions (3–5 big claims)</div>
+      <div class="tracker-note">Ongoing</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Don't stop for every unknown word — use context first</div>
+      <div class="tracker-note">Ongoing</div>
+    </div>
+  </div>
+
+  <div class="tracker">
+    <div class="tracker-header">After Reading</div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Summarise the entire book in 2–3 sentences</div>
+      <div class="tracker-note">5 min</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Ask: "Which of the author's questions got answered?"</div>
+      <div class="tracker-note">5 min</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Form your critique: Uninformed? Misinformed? Illogical? Incomplete?</div>
+      <div class="tracker-note">10 min</div>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-check">☐</div>
+      <div class="tracker-label">Write what you'd tell a friend about this book in 3 sentences</div>
+      <div class="tracker-note">5 min</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SKEPTIC FINAL -->
+  <div id="skeptic-final"></div>
+  <h1>🤔 But Does Any of This Actually Work?</h1>
+
+  <p>Fair question. Let's be honest about what this framework is and isn't.</p>
+
+  <div class="toggle-wrapper">
+    <details>
+      <summary>📗 What the framework does well</summary>
+      <div class="toggle-content">
+        <p>Adler's framework is one of the few that treats reading as an active, two-way process — a conversation between reader and author. Most speed-reading advice focuses on input volume. Adler focuses on comprehension quality. Research in cognitive science supports this: active engagement (asking questions, making predictions, summarising) leads to significantly better retention and understanding than passive reading.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="toggle-wrapper">
+    <details>
+      <summary>📕 Where to be skeptical</summary>
+      <div class="toggle-content">
+        <p>The book was written in 1940, revised in 1972. Some examples are dated. Adler has a strong bias toward Western "Great Books" — philosophy, history, literature — and is less useful for technical subjects (mathematics, programming, hard science). His framework also requires significant time investment. Applying Level 3 reading to every book you pick up is exhausting and unnecessary.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="toggle-wrapper">
+    <details>
+      <summary>✅ The honest verdict</summary>
+      <div class="toggle-content">
+        <p>Use levels 1 and 2 for most books. Reserve Level 3 for books that genuinely matter to you. Use Level 4 only when you want to become genuinely knowledgeable about a specific subject — and when you're willing to put in weeks, not hours. The framework doesn't make reading magical. It just stops you from wasting time on passive reading that leaves nothing behind.</p>
+      </div>
+    </details>
+  </div>
+
+  <blockquote style="margin-top: 32px;">
+    "When we read too fast or too slowly, we understand nothing."
+    <cite>— Blaise Pascal (quoted by Adler)</cite>
+  </blockquote>
+
+  <hr class="divider">
+
+  <!-- FOOTNOTE -->
+  <div class="footnote">
+    <p>📚 <strong>Source:</strong> This article is based on <em>How to Read a Book: The Classic Guide to Intelligent Reading</em> by Mortimer J. Adler and Charles Van Doren (1940, revised 1972, Touchstone/Simon & Schuster). The book is still in print and widely available.</p>
+    <p>🔍 <strong>Fact-checked against:</strong> Wikipedia (How to Read a Book), Farnam Street (fs.blog), ReadingGraphics, and the original text.</p>
+    <p>⚠️ <strong>Note on Charles Van Doren:</strong> Van Doren was later involved in the 1956–57 <em>Twenty-One</em> quiz show scandal — he received answers in advance. This is historically factual and worth noting for transparency, though it does not materially affect Adler's original 1940 framework.</p>
+  </div>
+
+</div>
+</body>
+</html>
