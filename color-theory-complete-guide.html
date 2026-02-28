@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Theory: The Complete Guide — From Zero to Brand Mastery</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0b;
+    --paper: #f9f6f0;
+    --warm: #f2ede4;
+    --accent: #c8402a;
+    --accent2: #2a6dc8;
+    --accent3: #2ac87a;
+    --gold: #d4a843;
+    --muted: #7a7469;
+    --border: #ddd8cf;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,.03) 40px,
+      rgba(255,255,255,.03) 41px
+    );
+  }
+  .hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(249,246,240,.7);
+    max-width: 560px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .hero-rainbow {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    gap: 2px;
+    max-width: 500px;
+  }
+  .hero-rainbow span {
+    flex: 1;
+    border-radius: 1px;
+  }
+
+  /* ── TOC ── */
+  .toc-wrap {
+    background: var(--warm);
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 40px;
+  }
+  .toc-inner { max-width: 860px; margin: 0 auto; }
+  .toc-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px 24px;
+    list-style: none;
+  }
+  .toc-grid li a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--border);
+    transition: color .2s;
+  }
+  .toc-grid li a:hover { color: var(--accent); }
+  .toc-grid li a .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    min-width: 20px;
+  }
+
+  /* ── LAYOUT ── */
+  .article {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding-top: 72px;
+    border-top: 1px solid var(--border);
+    margin-top: 72px;
+  }
+  .section:first-of-type { border-top: none; margin-top: 56px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 36px 0 12px;
+  }
+  p { margin-bottom: 18px; color: #2a2723; }
+  strong { font-weight: 600; }
+
+  /* ── IMAGE PLACEHOLDER ── */
+  .img-placeholder {
+    background: var(--warm);
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 32px 24px;
+    margin: 32px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .img-placeholder .img-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .img-placeholder .img-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .img-placeholder .img-title { font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+  .img-placeholder .img-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .img-placeholder .img-src {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    margin-top: 8px;
+    word-break: break-all;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-left: 4px solid var(--accent);
+    background: #fdf5f3;
+    padding: 18px 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 28px 0;
+  }
+  .callout.blue { border-color: var(--accent2); background: #f3f6fd; }
+  .callout.green { border-color: var(--accent3); background: #f3fdf7; }
+  .callout.gold { border-color: var(--gold); background: #fdf9f0; }
+  .callout-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .callout p { margin-bottom: 0; font-size: 15px; }
+
+  /* ── COLOR WHEEL DEMO ── */
+  .color-wheel-demo {
+    margin: 36px 0;
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    align-items: center;
+    justify-content: center;
+  }
+  .wheel-svg { width: 220px; height: 220px; flex-shrink: 0; }
+  .wheel-legend { display: flex; flex-direction: column; gap: 12px; }
+  .wheel-item { display: flex; align-items: center; gap: 12px; }
+  .wheel-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+  .wheel-label { color: rgba(249,246,240,.9); font-size: 14px; }
+  .wheel-sub { color: rgba(249,246,240,.45); font-size: 12px; }
+
+  /* ── COLOR SWATCHES ── */
+  .swatch-row {
+    display: flex;
+    gap: 6px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    flex: 1;
+    min-width: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .swatch-color { height: 70px; }
+  .swatch-info {
+    padding: 8px 6px;
+    background: var(--warm);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+  }
+  .swatch-name { font-size: 11px; font-weight: 600; display: block; }
+  .swatch-hex { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+
+  /* ── SCHEME DEMOS ── */
+  .scheme-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+  .scheme-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .scheme-colors { display: flex; height: 60px; }
+  .scheme-colors span { flex: 1; }
+  .scheme-info { padding: 12px 14px; }
+  .scheme-name { font-weight: 600; font-size: 14px; }
+  .scheme-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* ── HEX DEMO ── */
+  .hex-demo {
+    background: var(--ink);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin: 28px 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--paper);
+  }
+  .hex-row { display: flex; align-items: center; gap: 16px; margin: 10px 0; }
+  .hex-swatch { width: 28px; height: 28px; border-radius: 4px; border: 1px solid rgba(255,255,255,.1); }
+  .hex-code { color: var(--gold); }
+  .hex-breakdown { color: rgba(249,246,240,.5); font-size: 12px; }
+
+  /* ── BRANDING TABLE ── */
+  .brand-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px; }
+  .brand-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .brand-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .brand-table tr:nth-child(even) td { background: var(--warm); }
+  .brand-dot {
+    display: inline-block;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── TINT SHADE SCALE ── */
+  .tint-row {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    margin: 20px 0;
+  }
+  .tint-swatch {
+    flex: 1;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+    gap: 4px;
+  }
+  .tint-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); writing-mode: vertical-rl; transform: rotate(180deg); height: 40px; }
+  .tint-bar { width: 100%; border-radius: 4px; }
+
+  /* ── CONTRAST DEMO ── */
+  .contrast-demo { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+  .contrast-box {
+    flex: 1; min-width: 160px;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .contrast-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: .6;
+  }
+
+  /* ── 60-30-10 ── */
+  .rule-bar { display: flex; height: 50px; border-radius: 8px; overflow: hidden; margin: 20px 0; }
+  .rule-seg { display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; }
+
+  /* ── PROCESS STEPS ── */
+  .steps { counter-reset: step; margin: 28px 0; }
+  .step { display: flex; gap: 20px; margin-bottom: 24px; align-items: flex-start; }
+  .step-num {
+    counter-increment: step;
+    width: 36px; height: 36px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-body h4 { font-weight: 600; margin-bottom: 4px; }
+  .step-body p { margin-bottom: 0; font-size: 15px; }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* ── BRAND EXAMPLES ── */
+  .brand-examples { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+  .brand-example {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    flex: 1; min-width: 160px;
+  }
+  .brand-colors { display: flex; height: 40px; }
+  .brand-colors span { flex: 1; }
+  .brand-meta { padding: 10px 12px; }
+  .brand-name { font-weight: 600; font-size: 13px; }
+  .brand-scheme { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+  /* ── TOOLS GRID ── */
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin: 24px 0; }
+  .tool-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    transition: border-color .2s;
+  }
+  .tool-card:hover { border-color: var(--ink); }
+  .tool-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .tool-url { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent2); margin-bottom: 8px; }
+  .tool-desc { font-size: 13px; color: var(--muted); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--black);
+    color: rgba(249,247,244,0.5);
+    text-align: center;
+    padding: 40px 24px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-family: 'DM Mono', monospace;
+  }
+  /* ── PROGRESS BAR ── */
+    .progress-bar {
+      position: sticky;
+      top: 0;
+      height: 3px;
+      background: var(--light-gray);
+      z-index: 100;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width .1s;
+    }
+  @media (max-width: 600px) {
+    .hero { padding: 50px 20px 40px; }
+    .article { padding: 0 20px 60px; }
+    .toc-wrap { padding: 28px 20px; }
+    .scheme-grid { grid-template-columns: 1fr; }
+    .color-wheel-demo { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Complete Guide · Color Theory · Branding</span>
+    <h1>Color Theory:<br><em>From Zero to Brand Mastery</em></h1>
+    <p class="hero-sub">Everything you and your team need to understand, choose, and apply color with total confidence — in branding, design, and beyond.</p>
+    <div class="hero-rainbow">
+      <span style="background:#e63946"></span>
+      <span style="background:#f4722b"></span>
+      <span style="background:#f9c74f"></span>
+      <span style="background:#90be6d"></span>
+      <span style="background:#43aa8b"></span>
+      <span style="background:#277da1"></span>
+      <span style="background:#577590"></span>
+      <span style="background:#9b5de5"></span>
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc-wrap">
+  <div class="toc-inner">
+    <p class="toc-title">Table of Contents</p>
+    <ul class="toc-grid">
+      <li><a href="#s1"><span class="num">01</span> Why Color Matters</a></li>
+      <li><a href="#s2"><span class="num">02</span> The Color Wheel</a></li>
+      <li><a href="#s3"><span class="num">03</span> Color Properties</a></li>
+      <li><a href="#s4"><span class="num">04</span> Color Schemes</a></li>
+      <li><a href="#s5"><span class="num">05</span> Color Psychology</a></li>
+      <li><a href="#s6"><span class="num">06</span> Tints, Shades & Tones</a></li>
+      <li><a href="#s7"><span class="num">07</span> Color Interactions</a></li>
+      <li><a href="#s8"><span class="num">08</span> Hex & RGB Codes</a></li>
+      <li><a href="#s9"><span class="num">09</span> The 60-30-10 Rule</a></li>
+      <li><a href="#s10"><span class="num">10</span> Color in Branding</a></li>
+      <li><a href="#s11"><span class="num">11</span> Build Your Palette</a></li>
+      <li><a href="#s12"><span class="num">12</span> Tools & Resources</a></li>
+      <li><a href="#s13"><span class="num">13</span> Color in Illustrator</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article">
+
+  <!-- 01 -->
+  <section class="section" id="s1">
+    <p class="section-label">01 — Foundation</p>
+    <h2>Why Color Is the First Thing People Feel</h2>
+    <p>Before someone reads your headline, sees your logo, or hears your brand name — they feel your color. Research consistently shows that <strong>color accounts for up to 85% of the reason someone buys a product</strong>, and brand recognition increases by up to 80% when color is used consistently.</p>
+    <p>Color is not decoration. It is communication. It tells people: <em>who you are, who this is for, and how to feel about it.</em> A children's toy brand, a luxury watch, and a cybersecurity firm can all be excellent — but they must look completely different, because they're speaking to entirely different emotions.</p>
+
+    <div class="callout gold">
+      <p class="callout-title">💡 The Core Idea</p>
+      <p>Color works through <strong>association</strong>. When you see red on a food package, your brain thinks chili, heat, excitement. When you see blue on a bank's logo, your brain thinks stability, trust, safety. You are designing those associations — consciously or not.</p>
+    </div>
+
+    <div style="margin:32px 0;">
+      <div style="background:var(--ink);border-radius:12px;padding:8px 8px 0 8px;overflow:hidden;">
+        <div style="display:flex;gap:8px;align-items:stretch;">
+          <!-- Package A: Warm/Spicy -->
+          <div style="flex:1;background:linear-gradient(160deg,#c8402a 0%,#8b1a08 100%);border-radius:8px 8px 0 0;padding:28px 20px 24px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.5);text-transform:uppercase;">Brand A</div>
+            <div style="width:60px;height:60px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;">🌶️</div>
+            <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;text-align:center;line-height:1.2;">Fuego<br>Hot Sauce</div>
+            <div style="width:100%;background:rgba(255,255,255,.15);border-radius:4px;padding:8px;text-align:center;">
+              <div style="font-size:11px;color:rgba(255,255,255,.7);">EXTRA BOLD BLEND</div>
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:#f9c74f;margin-top:2px;">NET 250ml</div>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.6);text-align:center;font-style:italic;">"Feels exciting,<br>bold, appetite-driven"</div>
+          </div>
+          <!-- Package B: Cool/Clinical -->
+          <div style="flex:1;background:linear-gradient(160deg,#e8f0fe 0%,#c5d8f5 100%);border-radius:8px 8px 0 0;padding:28px 20px 24px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(0,0,0,.3);text-transform:uppercase;">Brand B</div>
+            <div style="width:60px;height:60px;background:rgba(67,97,238,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;">🌶️</div>
+            <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#2a40b0;text-align:center;line-height:1.2;">Fuego<br>Hot Sauce</div>
+            <div style="width:100%;background:rgba(67,97,238,.08);border-radius:4px;padding:8px;text-align:center;border:1px solid rgba(67,97,238,.15);">
+              <div style="font-size:11px;color:rgba(42,64,176,.7);">EXTRA BOLD BLEND</div>
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:#4361ee;margin-top:2px;">NET 250ml</div>
+            </div>
+            <div style="font-size:12px;color:rgba(0,0,0,.4);text-align:center;font-style:italic;">"Feels clinical,<br>cold, pharmaceutical"</div>
+          </div>
+        </div>
+        <div style="padding:14px 12px;display:flex;justify-content:center;gap:40px;">
+          <div style="text-align:center;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:#c8402a;text-transform:uppercase;">Red / Orange</div>
+            <div style="font-size:12px;color:rgba(249,246,240,.6);margin-top:2px;">Energy · Appetite · Excitement</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:#6b8cf5;text-transform:uppercase;">Blue / White</div>
+            <div style="font-size:12px;color:rgba(249,246,240,.6);margin-top:2px;">Clinical · Cold · Medical</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;text-align:center;letter-spacing:1px;">SAME PRODUCT · SAME NAME · COMPLETELY DIFFERENT FEELING — Color does all the work</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="section" id="s2">
+    <p class="section-label">02 — The Foundation</p>
+    <h2>The Color Wheel — Understanding the Map</h2>
+    <p>The color wheel is your master map. Every color relationship, every scheme, every harmony — it all comes from here. Invented by Sir Isaac Newton in 1666 when he bent sunlight through a prism, the wheel has been every designer's compass ever since.</p>
+
+    <!-- INTERACTIVE COLOR WHEEL VISUAL -->
+    <div class="color-wheel-demo">
+      <svg class="wheel-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <!-- 12 segments of color wheel -->
+        <g transform="translate(110,110)">
+          <!-- Red -->
+          <path d="M0,0 L0,-90 A90,90,0,0,1,44.5,-77.9 Z" fill="#e63946"/>
+          <!-- Red-Orange -->
+          <path d="M0,0 L44.5,-77.9 A90,90,0,0,1,77.9,-44.5 Z" fill="#f4722b"/>
+          <!-- Orange -->
+          <path d="M0,0 L77.9,-44.5 A90,90,0,0,1,90,0 Z" fill="#f9a825"/>
+          <!-- Yellow-Orange -->
+          <path d="M0,0 L90,0 A90,90,0,0,1,77.9,44.5 Z" fill="#f9c74f"/>
+          <!-- Yellow -->
+          <path d="M0,0 L77.9,44.5 A90,90,0,0,1,44.5,77.9 Z" fill="#d4e157"/>
+          <!-- Yellow-Green -->
+          <path d="M0,0 L44.5,77.9 A90,90,0,0,1,0,90 Z" fill="#90be6d"/>
+          <!-- Green -->
+          <path d="M0,0 L0,90 A90,90,0,0,1,-44.5,77.9 Z" fill="#43aa8b"/>
+          <!-- Blue-Green -->
+          <path d="M0,0 L-44.5,77.9 A90,90,0,0,1,-77.9,44.5 Z" fill="#277da1"/>
+          <!-- Blue -->
+          <path d="M0,0 L-77.9,44.5 A90,90,0,0,1,-90,0 Z" fill="#4361ee"/>
+          <!-- Blue-Violet -->
+          <path d="M0,0 L-90,0 A90,90,0,0,1,-77.9,-44.5 Z" fill="#7209b7"/>
+          <!-- Violet -->
+          <path d="M0,0 L-77.9,-44.5 A90,90,0,0,1,-44.5,-77.9 Z" fill="#9b5de5"/>
+          <!-- Red-Violet -->
+          <path d="M0,0 L-44.5,-77.9 A90,90,0,0,1,0,-90 Z" fill="#c77dff"/>
+          <!-- Inner white circle -->
+          <circle r="36" fill="#0f0e0b"/>
+          <circle r="30" fill="#f9f6f0" opacity=".08"/>
+        </g>
+        <!-- Labels -->
+        <text x="110" y="22" text-anchor="middle" fill="#e63946" font-size="9" font-family="DM Mono,monospace" font-weight="500">RED</text>
+        <text x="183" y="58" text-anchor="middle" fill="#f9a825" font-size="9" font-family="DM Mono,monospace">ORANGE</text>
+        <text x="196" y="115" text-anchor="middle" fill="#f9c74f" font-size="9" font-family="DM Mono,monospace">YELLOW</text>
+        <text x="152" y="190" text-anchor="middle" fill="#90be6d" font-size="9" font-family="DM Mono,monospace">GREEN</text>
+        <text x="40" y="190" text-anchor="middle" fill="#43aa8b" font-size="9" font-family="DM Mono,monospace">CYAN</text>
+        <text x="18" y="115" text-anchor="middle" fill="#4361ee" font-size="9" font-family="DM Mono,monospace">BLUE</text>
+        <text x="38" y="48" text-anchor="middle" fill="#9b5de5" font-size="9" font-family="DM Mono,monospace">VIOLET</text>
+      </svg>
+      <div class="wheel-legend">
+        <div class="wheel-item">
+          <div class="wheel-dot" style="background:#e63946"></div>
+          <div>
+            <div class="wheel-label" style="font-weight:600">Primary Colors</div>
+            <div class="wheel-sub">Red · Yellow · Blue — Can't be mixed from others</div>
+          </div>
+        </div>
+        <div class="wheel-item">
+          <div class="wheel-dot" style="background:#f9a825"></div>
+          <div>
+            <div class="wheel-label" style="font-weight:600">Secondary Colors</div>
+            <div class="wheel-sub">Orange · Green · Violet — 2 primaries mixed</div>
+          </div>
+        </div>
+        <div class="wheel-item">
+          <div class="wheel-dot" style="background:#f4722b"></div>
+          <div>
+            <div class="wheel-label" style="font-weight:600">Tertiary Colors</div>
+            <div class="wheel-sub">Red-Orange, Blue-Green, etc. — Primary + adjacent secondary</div>
+          </div>
+        </div>
+        <div class="wheel-item">
+          <div class="wheel-dot" style="background:#4361ee; border: 1px solid rgba(255,255,255,.3)"></div>
+          <div>
+            <div class="wheel-label" style="font-weight:600">12 Total Colors</div>
+            <div class="wheel-sub">On the standard RYB pigment wheel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Pigment vs. Light: Two Different Systems</h3>
+    <p>This trips up beginners constantly. There are <strong>two color systems</strong>:</p>
+    <p><strong>Pigment (RYB)</strong> — What you use in print, painting, physical design. Primary colors are Red, Yellow, Blue. Mix all colors → you get black (subtractive).</p>
+    <p><strong>Light (RGB)</strong> — What your screen uses. Primary colors are Red, Green, Blue. Mix all colors → you get white (additive). This is also why digital work uses hex codes like #FF0000.</p>
+
+    <div class="callout blue">
+      <p class="callout-title">🖥️ For designers working in digital</p>
+      <p>You'll mostly work in <strong>RGB / Hex</strong> on screen and <strong>CMYK</strong> when sending files to print. Always design in RGB for digital, and convert to CMYK before sending to a printer — colors will shift, so check proofs!</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="section" id="s3">
+    <p class="section-label">03 — Properties</p>
+    <h2>The Three Properties of Every Color</h2>
+    <p>Every single color in existence can be described with just three words: <strong>Hue, Saturation, and Brightness</strong> (HSB). Master these and you master all 16.7 million colors.</p>
+
+    <h3>Hue — What color is it?</h3>
+    <p>Hue is the pure color itself — red, blue, green, yellow. It's the position on the color wheel. When someone says "that's orange," they're talking about hue.</p>
+
+    <h3>Saturation — How intense is it?</h3>
+    <p>Saturation is how vivid vs. muted a color is. 100% saturation = electric, powerful, attention-grabbing. 0% saturation = grey. Lowering saturation gives you earthy, natural, calm, or sophisticated tones.</p>
+
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e63946"></div>
+        <div class="swatch-info"><span class="swatch-name">100% Sat</span><span class="swatch-hex">#E63946</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#c4606a"></div>
+        <div class="swatch-info"><span class="swatch-name">75% Sat</span><span class="swatch-hex">#C4606A</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#b08084"></div>
+        <div class="swatch-info"><span class="swatch-name">50% Sat</span><span class="swatch-hex">#B08084</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#9d9d9d"></div>
+        <div class="swatch-info"><span class="swatch-name">0% Sat</span><span class="swatch-hex">#9D9D9D</span></div>
+      </div>
+    </div>
+
+    <h3>Brightness (Value) — How light or dark?</h3>
+    <p>Brightness is how much light is in the color. 100% = white, 0% = black. Lowering brightness moves the color toward black. This is what creates depth, shadow, and dimension in your design.</p>
+
+    <div style="margin:32px 0;">
+      <div style="background:#1e1e1e;border-radius:12px;padding:20px;font-family:'DM Mono',monospace;max-width:480px;border:1px solid #333;">
+        <!-- Title bar -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <div style="font-size:11px;letter-spacing:2px;color:#888;text-transform:uppercase;">Color Panel — HSB Mode</div>
+          <div style="display:flex;gap:5px;">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840;"></div>
+          </div>
+        </div>
+        <!-- Color preview -->
+        <div style="display:flex;gap:12px;align-items:center;margin-bottom:20px;">
+          <div style="width:56px;height:56px;border-radius:8px;background:#4361ee;border:2px solid #333;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:11px;color:#888;margin-bottom:2px;">HEX</div>
+            <div style="font-size:16px;color:#fff;letter-spacing:2px;">#4361EE</div>
+          </div>
+        </div>
+        <!-- H Slider -->
+        <div style="margin-bottom:14px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <div style="font-size:11px;color:#aaa;">H — Hue</div>
+            <div style="font-size:11px;color:#f9c74f;">228°</div>
+          </div>
+          <div style="position:relative;height:14px;border-radius:7px;background:linear-gradient(to right,#ff0000,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff,#ff0000);overflow:visible;">
+            <div style="position:absolute;left:63%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid #333;box-shadow:0 2px 6px rgba(0,0,0,.5);"></div>
+          </div>
+        </div>
+        <!-- S Slider -->
+        <div style="margin-bottom:14px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <div style="font-size:11px;color:#aaa;">S — Saturation</div>
+            <div style="font-size:11px;color:#f9c74f;">70%</div>
+          </div>
+          <div style="position:relative;height:14px;border-radius:7px;background:linear-gradient(to right,#9e9e9e,#4361ee);overflow:visible;">
+            <div style="position:absolute;left:70%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid #333;box-shadow:0 2px 6px rgba(0,0,0,.5);"></div>
+          </div>
+        </div>
+        <!-- B Slider -->
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <div style="font-size:11px;color:#aaa;">B — Brightness</div>
+            <div style="font-size:11px;color:#f9c74f;">93%</div>
+          </div>
+          <div style="position:relative;height:14px;border-radius:7px;background:linear-gradient(to right,#000000,#4361ee);overflow:visible;">
+            <div style="position:absolute;left:93%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid #333;box-shadow:0 2px 6px rgba(0,0,0,.5);"></div>
+          </div>
+        </div>
+        <!-- Annotation -->
+        <div style="border-top:1px solid #333;padding-top:14px;display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:11px;color:#666;">H = what color it is &nbsp;·&nbsp; S = how vivid &nbsp;·&nbsp; B = how light or dark</div>
+          <div style="font-size:11px;color:#444;">Adobe Illustrator: Window → Color → Options → HSB</div>
+        </div>
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;letter-spacing:1px;">HSB COLOR PICKER — The three sliders that control every color in existence</p>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="section" id="s4">
+    <p class="section-label">04 — Harmony</p>
+    <h2>Color Schemes — The Six Harmonies</h2>
+    <p>A color scheme is a set of colors chosen to work together. The six classic harmonies each produce a different emotional result. Understanding them lets you choose intentionally instead of randomly.</p>
+
+    <div class="scheme-grid">
+      <div class="scheme-card">
+        <div class="scheme-colors">
+          <span style="background:#4361ee"></span>
+          <span style="background:#e63946"></span>
+        </div>
+        <div class="scheme-info">
+          <div class="scheme-name">Complementary</div>
+          <div class="scheme-desc">Colors directly opposite on the wheel. Maximum contrast. Bold and energetic — but can be harsh if both are fully saturated. Used by: FedEx (orange + purple), Lakers (purple + gold).</div>
+        </div>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-colors">
+          <span style="background:#4361ee"></span>
+          <span style="background:#f9a825"></span>
+          <span style="background:#e63946"></span>
+        </div>
+        <div class="scheme-info">
+          <div class="scheme-name">Split-Complementary</div>
+          <div class="scheme-desc">One color + two colors on either side of its complement. Almost as much contrast but softer, more versatile. Great starter scheme for beginners.</div>
+        </div>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-colors">
+          <span style="background:#e63946"></span>
+          <span style="background:#f4722b"></span>
+          <span style="background:#f9a825"></span>
+          <span style="background:#f9c74f"></span>
+        </div>
+        <div class="scheme-info">
+          <div class="scheme-name">Analogous</div>
+          <div class="scheme-desc">3–5 colors sitting next to each other on the wheel. Natural, harmonious, calming. Found everywhere in nature (autumn leaves, sunset). Great for organic brands.</div>
+        </div>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-colors">
+          <span style="background:#e63946"></span>
+          <span style="background:#f9c74f"></span>
+          <span style="background:#4361ee"></span>
+        </div>
+        <div class="scheme-info">
+          <div class="scheme-name">Triadic</div>
+          <div class="scheme-desc">Three colors equally spaced on the wheel (120° apart). Vibrant and dynamic while staying balanced. Commonly used in playful, energetic branding.</div>
+        </div>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-colors">
+          <span style="background:#4361ee"></span>
+          <span style="background:#e63946"></span>
+          <span style="background:#f9c74f"></span>
+          <span style="background:#43aa8b"></span>
+        </div>
+        <div class="scheme-info">
+          <div class="scheme-name">Tetradic (Square)</div>
+          <div class="scheme-desc">Four colors evenly spaced. Rich and complex. Challenging to balance — always let one color dominate. Best for experienced designers.</div>
+        </div>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-colors">
+          <span style="background:#1a3a8f"></span>
+          <span style="background:#2a5ec4"></span>
+          <span style="background:#4361ee"></span>
+          <span style="background:#6b8cf5"></span>
+          <span style="background:#a8bbfa"></span>
+        </div>
+        <div class="scheme-info">
+          <div class="scheme-name">Monochromatic</div>
+          <div class="scheme-desc">One hue, varied in saturation and brightness. Always elegant and cohesive. Easiest to get right. Common in luxury, tech, and editorial design.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p class="callout-title">🎯 Rule of Thumb for Beginners</p>
+      <p>Start with <strong>monochromatic or analogous</strong> — they're nearly impossible to get wrong. Move to split-complementary when you want contrast. Only use triadic or tetradic when you're confident and have a dominant color strategy.</p>
+    </div>
+
+    <div style="margin:32px 0;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;">
+        
+        <!-- Complementary: FedEx -->
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <div style="display:flex;height:44px;">
+            <div style="flex:1;background:#4d148c;"></div>
+            <div style="flex:1;background:#ff6600;"></div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <div style="font-weight:700;font-size:14px;">FedEx</div>
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);background:#fdf5f3;padding:2px 7px;border-radius:20px;">Complementary</div>
+            </div>
+            <div style="font-size:12px;color:var(--muted);">Purple + Orange — directly opposite on the wheel. Maximum contrast, high visibility, unforgettable.</div>
+          </div>
+        </div>
+
+        <!-- Analogous: Instagram -->
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <div style="display:flex;height:44px;">
+            <div style="flex:1;background:#f58529;"></div>
+            <div style="flex:1;background:#dd2a7b;"></div>
+            <div style="flex:1;background:#8134af;"></div>
+            <div style="flex:1;background:#515bd4;"></div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <div style="font-weight:700;font-size:14px;">Instagram</div>
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:#2a6dc8;background:#f3f6fd;padding:2px 7px;border-radius:20px;">Analogous</div>
+            </div>
+            <div style="font-size:12px;color:var(--muted);">Orange → Pink → Purple → Blue. Adjacent colors flowing naturally. Warm to cool sunset gradient.</div>
+          </div>
+        </div>
+
+        <!-- Triadic: Burger King -->
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <div style="display:flex;height:44px;">
+            <div style="flex:1;background:#D62300;"></div>
+            <div style="flex:1;background:#F5C700;"></div>
+            <div style="flex:1;background:#2D4F9E;"></div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <div style="font-weight:700;font-size:14px;">Burger King</div>
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:#2ac87a;background:#f3fdf7;padding:2px 7px;border-radius:20px;">Triadic</div>
+            </div>
+            <div style="font-size:12px;color:var(--muted);">Red + Yellow + Blue — primary color triad. Energetic, playful, bold. 120° apart on the wheel.</div>
+          </div>
+        </div>
+
+        <!-- Monochromatic: Twitter/X -->
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <div style="display:flex;height:44px;">
+            <div style="flex:1;background:#1DA1F2;"></div>
+            <div style="flex:1;background:#0d8ed9;"></div>
+            <div style="flex:1;background:#0a6fb3;"></div>
+            <div style="flex:1;background:#e8f5fe;"></div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <div style="font-weight:700;font-size:14px;">Twitter</div>
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);background:var(--warm);padding:2px 7px;border-radius:20px;">Monochromatic</div>
+            </div>
+            <div style="font-size:12px;color:var(--muted);">One blue, multiple brightness levels. Clean, focused, instantly recognizable — zero confusion.</div>
+          </div>
+        </div>
+
+        <!-- Split-Complementary: Nike -->
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <div style="display:flex;height:44px;">
+            <div style="flex:2;background:#111111;"></div>
+            <div style="flex:1;background:#f5f5f5;"></div>
+            <div style="flex:1;background:#e8401a;"></div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <div style="font-weight:700;font-size:14px;">Nike</div>
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);background:#fdf5f3;padding:2px 7px;border-radius:20px;">Split-Comp</div>
+            </div>
+            <div style="font-size:12px;color:var(--muted);">Black dominant + white secondary + orange accent (10%). The accent does all the emotional work.</div>
+          </div>
+        </div>
+
+        <!-- Tetradic: Google -->
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <div style="display:flex;height:44px;">
+            <div style="flex:1;background:#4285F4;"></div>
+            <div style="flex:1;background:#EA4335;"></div>
+            <div style="flex:1;background:#FBBC05;"></div>
+            <div style="flex:1;background:#34A853;"></div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <div style="font-weight:700;font-size:14px;">Google</div>
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:#2ac87a;background:#f3fdf7;padding:2px 7px;border-radius:20px;">Tetradic</div>
+            </div>
+            <div style="font-size:12px;color:var(--muted);">Blue + Red + Yellow + Green — four evenly spaced colors. Balanced, universal, approachable.</div>
+          </div>
+        </div>
+
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:12px;text-align:center;letter-spacing:1px;">6 HARMONY TYPES · 6 GLOBAL BRANDS · Same theory, different executions</p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="section" id="s5">
+    <p class="section-label">05 — Psychology</p>
+    <h2>Color Psychology — What Each Color Says</h2>
+    <p>Colors carry deep psychological associations — some universal, some cultural. Before choosing colors for any brand or project, you must understand what you're communicating.</p>
+
+    <table class="brand-table">
+      <thead>
+        <tr>
+          <th>Color</th>
+          <th>Positive Associations</th>
+          <th>Negative Associations</th>
+          <th>Used By</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="brand-dot" style="background:#e63946"></span><strong>Red</strong></td>
+          <td>Energy, passion, urgency, appetite, excitement</td>
+          <td>Danger, aggression, warning</td>
+          <td>Coca-Cola, Netflix, YouTube, McDonald's</td>
+        </tr>
+        <tr>
+          <td><span class="brand-dot" style="background:#f4722b"></span><strong>Orange</strong></td>
+          <td>Warmth, creativity, enthusiasm, affordability</td>
+          <td>Cheap, overwhelming</td>
+          <td>Amazon, Fanta, Harley-Davidson, Dunkin'</td>
+        </tr>
+        <tr>
+          <td><span class="brand-dot" style="background:#f9c74f"></span><strong>Yellow</strong></td>
+          <td>Happiness, optimism, visibility, speed</td>
+          <td>Anxiety, caution, immaturity</td>
+          <td>McDonald's, IKEA, Snapchat, DHL</td>
+        </tr>
+        <tr>
+          <td><span class="brand-dot" style="background:#43aa8b"></span><strong>Green</strong></td>
+          <td>Nature, health, growth, money, safety</td>
+          <td>Envy, inexperience</td>
+          <td>Whole Foods, Starbucks, John Deere, Spotify</td>
+        </tr>
+        <tr>
+          <td><span class="brand-dot" style="background:#4361ee"></span><strong>Blue</strong></td>
+          <td>Trust, stability, calm, intelligence, professionalism</td>
+          <td>Cold, detached, corporate</td>
+          <td>Facebook, Samsung, Ford, PayPal, LinkedIn</td>
+        </tr>
+        <tr>
+          <td><span class="brand-dot" style="background:#9b5de5"></span><strong>Purple</strong></td>
+          <td>Luxury, creativity, wisdom, spirituality</td>
+          <td>Artificial, excessive</td>
+          <td>Cadbury, Hallmark, Milka, FedEx</td>
+        </tr>
+        <tr>
+          <td><span class="brand-dot" style="background:#f48cab"></span><strong>Pink</strong></td>
+          <td>Femininity, romance, youthfulness, care</td>
+          <td>Naivety, weakness</td>
+          <td>Barbie, T-Mobile, Victoria's Secret, Baskin-Robbins</td>
+        </tr>
+        <tr>
+          <td><span class="brand-dot" style="background:#0f0e0b; border:1px solid #ccc;"></span><strong>Black</strong></td>
+          <td>Luxury, power, sophistication, authority</td>
+          <td>Mourning, death, heaviness</td>
+          <td>Chanel, Apple, Nike, Gucci</td>
+        </tr>
+        <tr>
+          <td><span class="brand-dot" style="background:#f9f6f0; border:1px solid #ccc;"></span><strong>White</strong></td>
+          <td>Cleanliness, purity, simplicity, space</td>
+          <td>Sterile, cold, empty</td>
+          <td>Apple, Tesla, Aesop, most luxury brands</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout gold">
+      <p class="callout-title">🌍 Cultural Context Matters!</p>
+      <p>White means purity in Western culture but mourning in many East Asian cultures. Red means danger in the West but luck and prosperity in China. Green is sacred in Islam. <strong>Always research the cultural associations</strong> of your colors if you're designing for international audiences.</p>
+    </div>
+
+    <h3>The "Spicy Food" Principle</h3>
+    <p>Here's a practical shortcut: think about what colors exist naturally in your product's world. Spicy food brands use reds and oranges because chilies are red-orange. Fresh juice brands use green and citrus yellow. Artisan coffee brands use dark brown and warm cream. <strong>Match your palette to the sensory world of what you're selling.</strong></p>
+
+    <div style="margin:32px 0;">
+      <div style="background:var(--ink);border-radius:12px;padding:28px 20px;">
+        <div style="text-align:center;margin-bottom:20px;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:rgba(249,246,240,.4);text-transform:uppercase;">Quick Reference</div>
+          <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--paper);margin-top:4px;">Color Psychology at a Glance</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;">
+          
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07);">
+            <div style="background:#e63946;padding:14px 14px 10px;display:flex;align-items:center;gap:10px;">
+              <div style="font-size:22px;">🔴</div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;">Red</div>
+            </div>
+            <div style="background:rgba(230,57,70,.12);padding:10px 14px;">
+              <div style="font-size:12px;color:rgba(249,246,240,.8);line-height:1.7;">Energy · Passion<br>Urgency · Appetite<br>Danger · Power</div>
+              <div style="margin-top:6px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(230,57,70,.9);">Coca-Cola · Netflix · YouTube</div>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07);">
+            <div style="background:#f4722b;padding:14px 14px 10px;display:flex;align-items:center;gap:10px;">
+              <div style="font-size:22px;">🟠</div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;">Orange</div>
+            </div>
+            <div style="background:rgba(244,114,43,.12);padding:10px 14px;">
+              <div style="font-size:12px;color:rgba(249,246,240,.8);line-height:1.7;">Warmth · Creativity<br>Enthusiasm · Fun<br>Affordability</div>
+              <div style="margin-top:6px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(244,114,43,.9);">Amazon · Fanta · Harley</div>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07);">
+            <div style="background:#d4a843;padding:14px 14px 10px;display:flex;align-items:center;gap:10px;">
+              <div style="font-size:22px;">🟡</div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;">Yellow</div>
+            </div>
+            <div style="background:rgba(212,168,67,.12);padding:10px 14px;">
+              <div style="font-size:12px;color:rgba(249,246,240,.8);line-height:1.7;">Happiness · Optimism<br>Visibility · Speed<br>Caution</div>
+              <div style="margin-top:6px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(212,168,67,.9);">McDonald's · IKEA · Snapchat</div>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07);">
+            <div style="background:#43aa8b;padding:14px 14px 10px;display:flex;align-items:center;gap:10px;">
+              <div style="font-size:22px;">🟢</div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;">Green</div>
+            </div>
+            <div style="background:rgba(67,170,139,.12);padding:10px 14px;">
+              <div style="font-size:12px;color:rgba(249,246,240,.8);line-height:1.7;">Nature · Health · Growth<br>Money · Safety<br>Balance</div>
+              <div style="margin-top:6px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(67,170,139,.9);">Starbucks · Spotify · Whole Foods</div>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07);">
+            <div style="background:#4361ee;padding:14px 14px 10px;display:flex;align-items:center;gap:10px;">
+              <div style="font-size:22px;">🔵</div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;">Blue</div>
+            </div>
+            <div style="background:rgba(67,97,238,.12);padding:10px 14px;">
+              <div style="font-size:12px;color:rgba(249,246,240,.8);line-height:1.7;">Trust · Stability<br>Intelligence · Calm<br>Professionalism</div>
+              <div style="margin-top:6px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(67,97,238,.9);">Facebook · Samsung · PayPal</div>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07);">
+            <div style="background:#9b5de5;padding:14px 14px 10px;display:flex;align-items:center;gap:10px;">
+              <div style="font-size:22px;">🟣</div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;">Purple</div>
+            </div>
+            <div style="background:rgba(155,93,229,.12);padding:10px 14px;">
+              <div style="font-size:12px;color:rgba(249,246,240,.8);line-height:1.7;">Luxury · Wisdom<br>Creativity · Mystery<br>Spirituality</div>
+              <div style="margin-top:6px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(155,93,229,.9);">Cadbury · Hallmark · FedEx</div>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07);">
+            <div style="background:#1a1a1a;padding:14px 14px 10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.1);">
+              <div style="font-size:22px;">⚫</div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;">Black</div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);padding:10px 14px;">
+              <div style="font-size:12px;color:rgba(249,246,240,.8);line-height:1.7;">Luxury · Power<br>Sophistication<br>Authority · Elegance</div>
+              <div style="margin-top:6px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);">Chanel · Apple · Nike · Gucci</div>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07);">
+            <div style="background:#e8e0d4;padding:14px 14px 10px;display:flex;align-items:center;gap:10px;">
+              <div style="font-size:22px;">⚪</div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#333;">White</div>
+            </div>
+            <div style="background:rgba(255,255,255,.07);padding:10px 14px;">
+              <div style="font-size:12px;color:rgba(249,246,240,.8);line-height:1.7;">Purity · Cleanliness<br>Simplicity · Space<br>Minimalism</div>
+              <div style="margin-top:6px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);">Apple · Tesla · Aesop</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;text-align:center;letter-spacing:1px;">COLOR PSYCHOLOGY REFERENCE — Pin this up at your workstation</p>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="section" id="s6">
+    <p class="section-label">06 — Depth & Nuance</p>
+    <h2>Tints, Shades & Tones — Building Palette Depth</h2>
+    <p>Every hue can produce a whole family of colors. This is how you create a palette that feels rich and professional rather than flat and amateur.</p>
+
+    <h3>Tint = Hue + White</h3>
+    <p>Adding white creates pastel versions of a color. Lighter, softer, more delicate. Pastels feel gentle, airy, feminine, or youthful. Instagram's gradient, millennial pink — these are all tints.</p>
+
+    <h3>Shade = Hue + Black</h3>
+    <p>Adding black creates darker, richer, moodier versions. Shades feel powerful, dramatic, and luxurious. Navy blue, forest green, burgundy — all shades.</p>
+
+    <h3>Tone = Hue + Grey</h3>
+    <p>Adding grey creates muted, sophisticated versions. Tones feel earthy, natural, vintage, and calm. Dusky rose, sage green, slate blue — all tones. Tones are the secret ingredient in high-end brand palettes.</p>
+
+    <!-- TINT/SHADE SCALE FOR BLUE -->
+    <p style="font-size:13px; color:var(--muted); font-family:'DM Mono',monospace; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Blue — Tint → Pure → Shade</p>
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#d6e0fd"></div>
+        <div class="swatch-info"><span class="swatch-name">Tint 80%</span><span class="swatch-hex">#D6E0FD</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#a8bbfa"></div>
+        <div class="swatch-info"><span class="swatch-name">Tint 60%</span><span class="swatch-hex">#A8BBFA</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6b8cf5"></div>
+        <div class="swatch-info"><span class="swatch-name">Tint 30%</span><span class="swatch-hex">#6B8CF5</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4361ee"></div>
+        <div class="swatch-info"><span class="swatch-name">Base Hue</span><span class="swatch-hex">#4361EE</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2a40b0"></div>
+        <div class="swatch-info"><span class="swatch-name">Shade 30%</span><span class="swatch-hex">#2A40B0</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#152070"></div>
+        <div class="swatch-info"><span class="swatch-name">Shade 60%</span><span class="swatch-hex">#152070</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#080f32"></div>
+        <div class="swatch-info"><span class="swatch-name">Shade 90%</span><span class="swatch-hex">#080F32</span></div>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <p class="callout-title">✅ Pro Tip: Build a Tint Stack</p>
+      <p>When building a brand palette, generate at least 5 tints and 3 shades of your primary color. This gives your team flexibility to use light versions for backgrounds, mid versions for UI elements, and dark versions for text — all staying on-brand.</p>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="section" id="s7">
+    <p class="section-label">07 — Interactions</p>
+    <h2>Color Interactions — Why Context Changes Everything</h2>
+    <p>Here's something that will blow your mind: <strong>the same color looks different depending on what's around it.</strong> This isn't a bug — it's how human vision works. Josef Albers called this "the interaction of color," and it's why a color that looks perfect in isolation can fail in your actual design.</p>
+
+    <h3>Simultaneous Contrast</h3>
+    <p>When two colors sit next to each other, they push each other away — making differences seem larger than they are. A grey square looks warm on a cool blue background and cool on a warm orange background. <strong>Always evaluate your colors in context, never in isolation.</strong></p>
+
+    <div class="contrast-demo">
+      <div class="contrast-box" style="background:#f4722b; color:#6b8cf5">
+        <div class="contrast-label">Blue on Orange</div>
+        <strong>This blue looks cooler<br>and more electric</strong>
+      </div>
+      <div class="contrast-box" style="background:#1a1a2e; color:#6b8cf5">
+        <div class="contrast-label">Blue on Dark</div>
+        <strong>Same blue looks<br>brighter and lighter</strong>
+      </div>
+      <div class="contrast-box" style="background:#d6e0fd; color:#6b8cf5">
+        <div class="contrast-label">Blue on Light Blue</div>
+        <strong>Same blue looks<br>dull and heavy</strong>
+      </div>
+    </div>
+
+    <h3>Contrast Ratio & Accessibility</h3>
+    <p>Contrast isn't just aesthetic — it's about readability and accessibility. WCAG guidelines require a <strong>contrast ratio of at least 4.5:1</strong> for normal text and 3:1 for large text. Black on white is ~21:1 (maximum). Light grey on white might be 1.5:1 (illegible and inaccessible).</p>
+
+    <div class="contrast-demo">
+      <div class="contrast-box" style="background:#000000; color:#ffffff; flex:1">
+        <div class="contrast-label">PASS — 21:1</div>
+        White text on black. Perfect.
+      </div>
+      <div class="contrast-box" style="background:#4361ee; color:#ffffff; flex:1">
+        <div class="contrast-label">PASS — 4.7:1</div>
+        White text on blue. Acceptable.
+      </div>
+      <div class="contrast-box" style="background:#f9c74f; color:#ffffff; flex:1">
+        <div class="contrast-label">FAIL — 1.9:1</div>
+        White text on yellow. Unreadable.
+      </div>
+      <div class="contrast-box" style="background:#f9c74f; color:#0f0e0b; flex:1">
+        <div class="contrast-label">PASS — 11:1</div>
+        Dark text on yellow. Works great.
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <p class="callout-title">🔧 Test Contrast Instantly</p>
+      <p>Use <strong>coolors.co/contrast-checker</strong> or the built-in contrast checker in Adobe Color (color.adobe.com). Both are free and give you immediate WCAG pass/fail feedback.</p>
+    </div>
+
+    <h3>The Nested Squares Method — Practical Palette Checking</h3>
+    <p>This is one of the most important practical techniques in all of color theory, developed by Josef Albers. Before finalizing any palette, <strong>always test your colors as nested squares</strong> — place one color inside another, the way colors actually appear in real design (text on background, card on page, button on section). The difference between how colors look isolated vs. nested can be dramatic.</p>
+    <p>In the image below, the same set of colors (dark navy, rust/terracotta, and blue) are shown nested inside each other in different combinations. Notice how the <em>same rust square looks completely different</em> depending on whether it sits inside a dark background or a light blue one. This is exactly what happens in real designs — and why checking colors as isolated swatches is never enough.</p>
+
+    <div style="margin: 28px 0; text-align: center;">
+      <img src="data:image/jpeg;base64,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" alt="Nested squares color interaction method — same colors look different depending on surrounding color" style="max-width: 340px; width: 100%; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,.08);" />
+      <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); margin-top:10px; letter-spacing:1px;">THE ALBERS NESTED SQUARES TEST — Same colors, different contexts, completely different perception</p>
+    </div>
+
+    <p><strong>How to do this test yourself:</strong> In Illustrator or Figma, create a large square in your background color. Place a medium square of your secondary color on top. Then place a small square of your accent or text color on top of that. Repeat for every major color combination you plan to use. If they look good nested — they will work in your real design.</p>
+
+    <div class="callout gold">
+      <p class="callout-title">🎯 The Golden Rule of Palette Checking</p>
+      <p>A palette that looks beautiful as isolated swatches can still fail in a real layout. <strong>Always test nested, always test in context.</strong> The nested squares method takes 2 minutes and will save you hours of redesign.</p>
+    </div>
+
+    <div style="margin:32px 0;">
+      <div style="background:#1a1a2e;border-radius:12px;padding:24px;max-width:520px;border:1px solid #2a2a4a;font-family:'DM Mono',monospace;">
+        <!-- Header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+          <div style="font-size:12px;letter-spacing:2px;color:#6b8cf5;text-transform:uppercase;">Contrast Checker</div>
+          <div style="font-size:10px;color:#444;letter-spacing:1px;">WCAG 2.1 AA/AAA</div>
+        </div>
+        <!-- Two color pickers -->
+        <div style="display:flex;gap:12px;margin-bottom:20px;">
+          <div style="flex:1;">
+            <div style="font-size:10px;color:#666;margin-bottom:6px;letter-spacing:1px;">FOREGROUND</div>
+            <div style="background:#0f0e0b;border:1px solid #333;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
+              <div style="width:24px;height:24px;border-radius:4px;background:#0f0e0b;border:1px solid #444;"></div>
+              <div style="color:#fff;font-size:13px;">#0F0E0B</div>
+            </div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:10px;color:#666;margin-bottom:6px;letter-spacing:1px;">BACKGROUND</div>
+            <div style="background:#0f0e0b;border:1px solid #333;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
+              <div style="width:24px;height:24px;border-radius:4px;background:#f9f6f0;border:1px solid #444;"></div>
+              <div style="color:#fff;font-size:13px;">#F9F6F0</div>
+            </div>
+          </div>
+        </div>
+        <!-- Ratio display -->
+        <div style="background:rgba(249,246,240,.03);border:1px solid #333;border-radius:10px;padding:18px;margin-bottom:16px;text-align:center;">
+          <div style="font-size:10px;color:#666;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Contrast Ratio</div>
+          <div style="font-size:42px;font-weight:700;color:#f9c74f;line-height:1;">19.8<span style="font-size:20px;color:#666;">:1</span></div>
+          <div style="font-size:11px;color:rgba(249,246,240,.4);margin-top:6px;">Dark text on warm white</div>
+        </div>
+        <!-- WCAG badges -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;">
+          <div style="background:rgba(42,200,122,.1);border:1px solid rgba(42,200,122,.3);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:9px;color:#2ac87a;letter-spacing:1px;">AA</div>
+            <div style="font-size:16px;color:#2ac87a;margin:2px 0;">✓</div>
+            <div style="font-size:9px;color:#666;">Normal</div>
+          </div>
+          <div style="background:rgba(42,200,122,.1);border:1px solid rgba(42,200,122,.3);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:9px;color:#2ac87a;letter-spacing:1px;">AA</div>
+            <div style="font-size:16px;color:#2ac87a;margin:2px 0;">✓</div>
+            <div style="font-size:9px;color:#666;">Large</div>
+          </div>
+          <div style="background:rgba(42,200,122,.1);border:1px solid rgba(42,200,122,.3);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:9px;color:#2ac87a;letter-spacing:1px;">AAA</div>
+            <div style="font-size:16px;color:#2ac87a;margin:2px 0;">✓</div>
+            <div style="font-size:9px;color:#666;">Normal</div>
+          </div>
+          <div style="background:rgba(42,200,122,.1);border:1px solid rgba(42,200,122,.3);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:9px;color:#2ac87a;letter-spacing:1px;">AAA</div>
+            <div style="font-size:16px;color:#2ac87a;margin:2px 0;">✓</div>
+            <div style="font-size:9px;color:#666;">Large</div>
+          </div>
+        </div>
+        <!-- Preview -->
+        <div style="margin-top:14px;background:#f9f6f0;border-radius:8px;padding:14px;text-align:center;">
+          <div style="font-family:'Playfair Display',serif;font-size:16px;color:#0f0e0b;font-weight:700;">This is how your text looks</div>
+          <div style="font-size:12px;color:#0f0e0b;margin-top:4px;opacity:.7;">Body text is perfectly readable at this contrast ratio</div>
+        </div>
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;letter-spacing:1px;">CONTRAST CHECKER UI — Test any combination at coolors.co/contrast-checker</p>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="section" id="s8">
+    <p class="section-label">08 — Technical</p>
+    <h2>Hex Codes & RGB — The Language of Digital Color</h2>
+    <p>Every color on a screen has an exact address. Understanding this address system means you can communicate any color precisely to any developer, any software, any printer.</p>
+
+    <h3>First: Understanding Number Systems</h3>
+    <p>To truly understand hex codes, you need to understand the number systems behind them. Don't worry — this takes only 2 minutes and it will make everything click.</p>
+
+    <div class="hex-demo">
+      <div style="margin-bottom:16px; font-size:12px; color:rgba(249,246,240,.5); letter-spacing:2px; text-transform:uppercase;">Three Number Systems</div>
+      <div class="hex-row" style="flex-wrap:wrap; gap:8px;">
+        <div style="flex:1; min-width:180px; background:rgba(255,255,255,.05); border-radius:6px; padding:12px;">
+          <div style="color:var(--gold); font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">Decimal (Base 10)</div>
+          <div style="color:var(--paper); font-size:13px; line-height:1.6;">Digits: <strong style="color:#f9c74f">0, 1, 2, 3, 4, 5, 6, 7, 8, 9</strong><br>Total: 10 digits<br>What we use in daily life</div>
+        </div>
+        <div style="flex:1; min-width:180px; background:rgba(255,255,255,.05); border-radius:6px; padding:12px;">
+          <div style="color:var(--gold); font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">Binary (Base 2)</div>
+          <div style="color:var(--paper); font-size:13px; line-height:1.6;">Digits: <strong style="color:#f9c74f">0, 1</strong><br>Total: 2 digits<br>What computers use internally</div>
+        </div>
+        <div style="flex:1; min-width:180px; background:rgba(255,255,255,.05); border-radius:6px; padding:12px;">
+          <div style="color:var(--gold); font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">Hexadecimal (Base 16)</div>
+          <div style="color:var(--paper); font-size:13px; line-height:1.6;">Digits: <strong style="color:#f9c74f">0–9, then A, B, C, D, E, F</strong><br>Total: 16 digits<br>What hex colors use</div>
+        </div>
+      </div>
+      <div style="margin-top:14px; font-size:13px; color:rgba(249,246,240,.6); line-height:1.6;">
+        In hexadecimal: A=10, B=11, C=12, D=13, E=14, <strong style="color:#f9c74f">F=15</strong> (the highest single-digit value). So "FF" = 15×16 + 15 = 255 — which is why <strong style="color:#f9c74f">#FFFFFF = white</strong> (all channels at maximum 255).
+      </div>
+    </div>
+
+    <h3>The RGB System & Why 16.7 Million Colors</h3>
+    <p>Your screen makes every color by mixing Red, Green, and Blue light. Each channel ranges from 0 (off) to 255 (full). So <strong>RGB(255, 0, 0)</strong> is pure red. <strong>RGB(0, 0, 255)</strong> is pure blue. <strong>RGB(255, 255, 255)</strong> is white (all on). <strong>RGB(0, 0, 0)</strong> is black (all off).</p>
+    <p>Each channel has <strong>256 possible values</strong> (0 through 255). Since you have three channels (R, G, B), the total number of colors is: <strong>256 × 256 × 256 = 16,777,216</strong> — approximately <strong>16.7 million colors</strong>. That's the origin of the number you'll hear everywhere in design.</p>
+
+    <h3>Hex Codes Explained</h3>
+    <p>Hex codes are just RGB values written in hexadecimal (base 16) instead of decimal (base 10). Because each channel (0–255) can be written as exactly two hex digits (00 to FF), a full hex color is always 6 characters: <strong>#RRGGBB</strong>. For example, <strong>#4361EE</strong> is: Red=43, Green=61, Blue=EE.</p>
+
+    <div class="hex-demo">
+      <div style="margin-bottom:16px; font-size:12px; color:rgba(249,246,240,.5); letter-spacing:2px; text-transform:uppercase;">Decoding Hex Colors</div>
+      <div class="hex-row">
+        <div class="hex-swatch" style="background:#4361ee"></div>
+        <span class="hex-code">#4361EE</span>
+        <span class="hex-breakdown">R: 43 hex = 67 · G: 61 hex = 97 · B: EE hex = 238</span>
+      </div>
+      <div class="hex-row">
+        <div class="hex-swatch" style="background:#e63946"></div>
+        <span class="hex-code">#E63946</span>
+        <span class="hex-breakdown">R: E6 hex = 230 · G: 39 hex = 57 · B: 46 hex = 70</span>
+      </div>
+      <div class="hex-row">
+        <div class="hex-swatch" style="background:#f9f6f0"></div>
+        <span class="hex-code">#F9F6F0</span>
+        <span class="hex-breakdown">R: F9 = 249 · G: F6 = 246 · B: F0 = 240 → Warm White</span>
+      </div>
+      <div class="hex-row">
+        <div class="hex-swatch" style="background:#888888"></div>
+        <span class="hex-code">#888888</span>
+        <span class="hex-breakdown">All channels equal = always a grey (neutral)</span>
+      </div>
+      <div class="hex-row">
+        <div class="hex-swatch" style="background:#ff00ff"></div>
+        <span class="hex-code">#FF00FF</span>
+        <span class="hex-breakdown">Full Red + Full Blue + No Green = Magenta</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p class="callout-title">💡 Quick Pattern Recognition</p>
+      <p>If all 6 digits of a hex code are the same (e.g. #888888, #CCCCCC), it's always a grey. The higher the value, the lighter. #FFFFFF = white, #000000 = black, #808080 = mid-grey. This is because when all R, G, B channels are equal, they cancel out into neutral grey.</p>
+    </div>
+
+    <p>You almost never need to type hex codes manually — every design tool has a color picker. But understanding the system means you can <strong>tweak colors intelligently</strong> and communicate with developers without confusion.</p>
+  </section>
+
+  <!-- 09 -->
+  <section class="section" id="s9">
+    <p class="section-label">09 — Application</p>
+    <h2>The 60-30-10 Rule — The Golden Ratio of Color</h2>
+    <p>Having a beautiful palette is step one. Knowing <em>how much</em> of each color to use is what separates professional design from chaotic design. The 60-30-10 rule is the single most useful rule in all of color application.</p>
+
+    <div class="rule-bar">
+      <div class="rule-seg" style="background:#4361ee; color:white; flex:6">60% — Dominant</div>
+      <div class="rule-seg" style="background:#a8bbfa; color:#152070; flex:3">30%</div>
+      <div class="rule-seg" style="background:#e63946; color:white; flex:1">10</div>
+    </div>
+
+    <p><strong>60% — Dominant Color:</strong> Your main background or brand color. Sets the overall mood and feel. Usually your most neutral or least intense color.</p>
+    <p><strong>30% — Secondary Color:</strong> Supports the dominant. Used for sidebars, sections, cards. Creates visual interest without competing.</p>
+    <p><strong>10% — Accent Color:</strong> Your most powerful, punchy color. Used only on CTAs, highlights, icons, important links. Because it's used sparingly, it commands attention instantly.</p>
+
+    <div class="callout gold">
+      <p class="callout-title">🚀 The Most Common Mistake</p>
+      <p>Using your boldest color everywhere. If everything is red, nothing is red — there's no focal point, no hierarchy, no rest for the eye. <strong>The accent color only works because of the space around it.</strong> Reserve your most vibrant color for the things you most need people to click, read, or notice.</p>
+    </div>
+
+    <div style="margin:32px 0;">
+      <div style="background:#0f0e0b;border-radius:12px;overflow:hidden;border:1px solid #2a2723;">
+        <!-- Browser chrome -->
+        <div style="background:#1a1917;padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #2a2723;">
+          <div style="display:flex;gap:5px;">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840;"></div>
+          </div>
+          <div style="flex:1;background:#0f0e0b;border-radius:4px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:10px;color:#666;">brandco.com</div>
+        </div>
+        <!-- Page layout -->
+        <div style="display:flex;min-height:280px;">
+          <!-- Sidebar 30% -->
+          <div style="width:180px;background:#1a2a4a;padding:20px 14px;flex-shrink:0;display:flex;flex-direction:column;gap:14px;">
+            <div style="font-family:'Playfair Display',serif;font-size:14px;color:#a8bbfa;font-weight:700;margin-bottom:4px;">BrandCo</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="background:rgba(107,140,245,.15);border-radius:5px;padding:7px 10px;font-family:'DM Mono',monospace;font-size:10px;color:#6b8cf5;border-left:2px solid #6b8cf5;">Dashboard</div>
+              <div style="padding:7px 10px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(168,187,250,.5);">Analytics</div>
+              <div style="padding:7px 10px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(168,187,250,.5);">Projects</div>
+              <div style="padding:7px 10px;font-family:'DM Mono',monospace;font-size:10px;color:rgba(168,187,250,.5);">Team</div>
+            </div>
+            <!-- Label -->
+            <div style="margin-top:auto;background:rgba(42,109,200,.15);border:1px dashed rgba(42,109,200,.4);border-radius:4px;padding:6px 8px;text-align:center;">
+              <div style="font-family:'DM Mono',monospace;font-size:9px;color:#6b8cf5;letter-spacing:1px;">30% SECONDARY</div>
+            </div>
+          </div>
+          <!-- Main content 60% -->
+          <div style="flex:1;background:#0f0e0b;padding:20px;display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-family:'Playfair Display',serif;font-size:16px;color:var(--paper);font-weight:700;">Overview</div>
+              <!-- 10% accent button -->
+              <div style="background:#e63946;border-radius:6px;padding:7px 14px;font-family:'DM Mono',monospace;font-size:10px;color:#fff;font-weight:600;">+ New Project</div>
+            </div>
+            <!-- Cards -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+              <div style="background:#1a1917;border-radius:8px;padding:12px;border:1px solid #2a2723;">
+                <div style="font-family:'DM Mono',monospace;font-size:9px;color:#7a7469;letter-spacing:1px;margin-bottom:4px;">REVENUE</div>
+                <div style="font-size:18px;color:var(--paper);font-weight:600;">$48.2k</div>
+                <div style="font-size:10px;color:#2ac87a;margin-top:2px;">↑ 12.4%</div>
+              </div>
+              <div style="background:#1a1917;border-radius:8px;padding:12px;border:1px solid #2a2723;">
+                <div style="font-family:'DM Mono',monospace;font-size:9px;color:#7a7469;letter-spacing:1px;margin-bottom:4px;">USERS</div>
+                <div style="font-size:18px;color:var(--paper);font-weight:600;">3,291</div>
+                <div style="font-size:10px;color:#2ac87a;margin-top:2px;">↑ 8.1%</div>
+              </div>
+              <div style="background:#1a1917;border-radius:8px;padding:12px;border:1px solid #2a2723;">
+                <div style="font-family:'DM Mono',monospace;font-size:9px;color:#7a7469;letter-spacing:1px;margin-bottom:4px;">CONV.</div>
+                <div style="font-size:18px;color:var(--paper);font-weight:600;">6.8%</div>
+                <div style="font-size:10px;color:#e63946;margin-top:2px;">↓ 0.3%</div>
+              </div>
+            </div>
+            <!-- Bottom row labels -->
+            <div style="display:flex;gap:8px;margin-top:4px;">
+              <div style="flex:1;background:rgba(15,14,11,.6);border:1px dashed rgba(255,255,255,.15);border-radius:4px;padding:6px;text-align:center;">
+                <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(249,246,240,.4);letter-spacing:1px;">60% DOMINANT — Main background · Page surface · Content area</div>
+              </div>
+              <div style="background:rgba(230,57,70,.15);border:1px dashed rgba(230,57,70,.4);border-radius:4px;padding:6px 10px;text-align:center;white-space:nowrap;">
+                <div style="font-family:'DM Mono',monospace;font-size:9px;color:#e63946;letter-spacing:1px;">10% ACCENT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;text-align:center;letter-spacing:1px;">60-30-10 IN A REAL UI — Dark dominant · Blue secondary · Red accent on the one button that matters</p>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="section" id="s10">
+    <p class="section-label">10 — Real World</p>
+    <h2>Color in Branding — How the Pros Do It</h2>
+    <p>Brand color decisions are some of the highest-stakes design decisions a company makes. The right palette creates instant recognition, communicates values without words, and builds emotional loyalty over time.</p>
+
+    <h3>What Makes a Brand Palette?</h3>
+    <p>A complete brand palette typically has:</p>
+    <p><strong>1 Primary Brand Color</strong> — The hero. What people associate with your brand immediately. Think Tiffany blue, Hermès orange, UPS brown.</p>
+    <p><strong>1–2 Secondary Colors</strong> — Supporting cast. Used in layouts, illustrations, secondary CTAs.</p>
+    <p><strong>1 Accent Color</strong> — The highlight. Often the complement or strong contrast color.</p>
+    <p><strong>2–3 Neutrals</strong> — Off-whites, greys, near-blacks. These make up 80% of most designs but are often chosen carelessly. Warm neutrals feel human and approachable. Cool neutrals feel clean and technical.</p>
+
+    <div class="brand-examples">
+      <div class="brand-example">
+        <div class="brand-colors">
+          <span style="background:#e8001c"></span>
+          <span style="background:#000000"></span>
+          <span style="background:#ffffff"></span>
+        </div>
+        <div class="brand-meta">
+          <div class="brand-name">Netflix</div>
+          <div class="brand-scheme">Complementary · Bold · Cinematic</div>
+        </div>
+      </div>
+      <div class="brand-example">
+        <div class="brand-colors">
+          <span style="background:#00A862"></span>
+          <span style="background:#1C1C1C"></span>
+          <span style="background:#f9f6f0"></span>
+        </div>
+        <div class="brand-meta">
+          <div class="brand-name">Spotify</div>
+          <div class="brand-scheme">Accent on dark · Energetic · Modern</div>
+        </div>
+      </div>
+      <div class="brand-example">
+        <div class="brand-colors">
+          <span style="background:#FF9900"></span>
+          <span style="background:#232F3E"></span>
+          <span style="background:#ffffff"></span>
+        </div>
+        <div class="brand-meta">
+          <div class="brand-name">Amazon</div>
+          <div class="brand-scheme">Warm accent · Trustworthy · Accessible</div>
+        </div>
+      </div>
+      <div class="brand-example">
+        <div class="brand-colors">
+          <span style="background:#FF5A5F"></span>
+          <span style="background:#00A699"></span>
+          <span style="background:#FC642D"></span>
+          <span style="background:#484848"></span>
+        </div>
+        <div class="brand-meta">
+          <div class="brand-name">Airbnb</div>
+          <div class="brand-scheme">Warm-cool balance · Friendly · Global</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin:32px 0;">
+      <div style="background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;font-family:'DM Sans',sans-serif;">
+        <!-- Header -->
+        <div style="background:#f9f6f0;border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:3px;">Brand Identity System</div>
+            <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);">Color Guidelines</div>
+          </div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">v2.4 · 2024</div>
+        </div>
+        <div style="padding:24px;">
+          <!-- Primary -->
+          <div style="margin-bottom:20px;">
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">Primary Color</div>
+            <div style="display:flex;gap:10px;align-items:stretch;">
+              <div style="width:100px;height:80px;background:#4361ee;border-radius:8px;flex-shrink:0;"></div>
+              <div style="flex:1;background:#f9f6f0;border-radius:8px;padding:12px 16px;">
+                <div style="font-weight:700;font-size:15px;color:var(--ink);margin-bottom:8px;">Brand Blue</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                  <div><div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">HEX</div><div style="font-family:'DM Mono',monospace;font-size:13px;color:#4361ee;">#4361EE</div></div>
+                  <div><div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">RGB</div><div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--ink);">67, 97, 238</div></div>
+                  <div><div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">CMYK</div><div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--ink);">72, 59, 0, 7</div></div>
+                </div>
+                <div style="margin-top:8px;font-size:12px;color:var(--muted);">Use for: Primary CTAs, logos, key headlines, links</div>
+              </div>
+            </div>
+          </div>
+          <!-- Secondary -->
+          <div style="margin-bottom:20px;">
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">Secondary Colors</div>
+            <div style="display:flex;gap:8px;">
+              <div style="flex:1;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
+                <div style="height:44px;background:#e63946;"></div>
+                <div style="padding:8px 10px;background:#fafafa;">
+                  <div style="font-weight:600;font-size:12px;">Accent Red</div>
+                  <div style="font-family:'DM Mono',monospace;font-size:10px;color:#e63946;">#E63946</div>
+                  <div style="font-size:11px;color:var(--muted);margin-top:2px;">Alerts, urgent CTAs</div>
+                </div>
+              </div>
+              <div style="flex:1;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
+                <div style="height:44px;background:#43aa8b;"></div>
+                <div style="padding:8px 10px;background:#fafafa;">
+                  <div style="font-weight:600;font-size:12px;">Success Green</div>
+                  <div style="font-family:'DM Mono',monospace;font-size:10px;color:#43aa8b;">#43AA8B</div>
+                  <div style="font-size:11px;color:var(--muted);margin-top:2px;">Success states, tags</div>
+                </div>
+              </div>
+              <div style="flex:1;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
+                <div style="height:44px;background:#f9c74f;"></div>
+                <div style="padding:8px 10px;background:#fafafa;">
+                  <div style="font-weight:600;font-size:12px;">Warm Yellow</div>
+                  <div style="font-family:'DM Mono',monospace;font-size:10px;color:#c9962f;">#F9C74F</div>
+                  <div style="font-size:11px;color:var(--muted);margin-top:2px;">Highlights, badges</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Neutrals -->
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">Neutrals</div>
+            <div style="display:flex;gap:6px;">
+              <div style="flex:1;border-radius:6px;overflow:hidden;border:1px solid var(--border);">
+                <div style="height:32px;background:#0f0e0b;"></div>
+                <div style="padding:5px 8px;"><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);">#0F0E0B</div><div style="font-size:10px;color:var(--ink);">Near Black</div></div>
+              </div>
+              <div style="flex:1;border-radius:6px;overflow:hidden;border:1px solid var(--border);">
+                <div style="height:32px;background:#3d3a34;"></div>
+                <div style="padding:5px 8px;"><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);">#3D3A34</div><div style="font-size:10px;color:var(--ink);">Dark Grey</div></div>
+              </div>
+              <div style="flex:1;border-radius:6px;overflow:hidden;border:1px solid var(--border);">
+                <div style="height:32px;background:#7a7469;"></div>
+                <div style="padding:5px 8px;"><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);">#7A7469</div><div style="font-size:10px;color:var(--ink);">Mid Grey</div></div>
+              </div>
+              <div style="flex:1;border-radius:6px;overflow:hidden;border:1px solid var(--border);">
+                <div style="height:32px;background:#ddd8cf;"></div>
+                <div style="padding:5px 8px;"><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);">#DDD8CF</div><div style="font-size:10px;color:var(--ink);">Light Grey</div></div>
+              </div>
+              <div style="flex:1;border-radius:6px;overflow:hidden;border:1px solid var(--border);">
+                <div style="height:32px;background:#f9f6f0;border-bottom:1px solid var(--border);"></div>
+                <div style="padding:5px 8px;"><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);">#F9F6F0</div><div style="font-size:10px;color:var(--ink);">Warm White</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;text-align:center;letter-spacing:1px;">BRAND COLOR GUIDELINES PAGE — Primary · Secondary · Neutrals with HEX, RGB and CMYK values</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="section" id="s11">
+    <p class="section-label">11 — Your Process</p>
+    <h2>Build Your Own Brand Palette — Step by Step</h2>
+    <p>Here is the complete process to go from zero to a professional, purposeful brand palette:</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Define Your Brand's Personality in 3 Words</h4>
+          <p>Before touching any color tools, write 3 adjectives that describe your brand. Example: "bold, trustworthy, approachable." These words should guide every color decision that follows.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Research Color Associations for Your Industry</h4>
+          <p>Look at 10 direct competitors' brands. Note their dominant colors. Then decide: do you want to fit the industry convention (trust) or stand out from it (differentiation)? Both can be right depending on your strategy.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Choose a Primary Hue Based on Your Psychology</h4>
+          <p>Using the psychology table from Section 05, pick the hue that best aligns with your 3 brand personality words. This is your anchor. Don't pick it because it's your favorite color — pick it because it communicates the right thing to your audience.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Use a Color Scheme Tool to Generate Harmonics</h4>
+          <p>Go to <strong>color.adobe.com</strong> or <strong>coolors.co</strong>. Input your primary hue and experiment with complementary, split-complementary, or analogous schemes. Don't pick what looks "pretty" — pick what serves your brand personality.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Add Neutrals and Build Your Tint Stack</h4>
+          <p>Pick 2–3 neutrals (near-white, mid-grey, near-black). Make sure they have a warm or cool cast that complements your primary. Then generate tints and shades of your primary color for background and text use cases.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Test Accessibility and Contrast</h4>
+          <p>Run every color combination you'll use for text/background through a contrast checker. Aim for WCAG AA (4.5:1) as minimum. This step is non-negotiable if your design reaches real users.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-body">
+          <h4>Apply the 60-30-10 Rule in a Mockup</h4>
+          <p>Before finalizing, apply your palette to a simple mockup — a business card, a landing page, a social media template. Colors only reveal their true character when in context. Adjust as needed.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">8</div>
+        <div class="step-body">
+          <h4>Document Everything in a Color Style Guide</h4>
+          <p>Record every color's hex code, RGB value, and CMYK value. Name each color (primary, secondary, accent, neutral-light, etc.). This documentation prevents inconsistency as your team scales. Share it with every designer, developer, and marketer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="section" id="s12">
+    <p class="section-label">12 — Toolkit</p>
+    <h2>The Best Free Color Tools</h2>
+    <p>You don't need to build palettes from scratch or memorize color theory alone. These tools turn theory into practice instantly:</p>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-name">Adobe Color</div>
+        <div class="tool-url">color.adobe.com</div>
+        <div class="tool-desc">The industry standard. Full color wheel with all 6 harmony rules. Extract palettes from photos. Accessibility checker built in.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Coolors</div>
+        <div class="tool-url">coolors.co</div>
+        <div class="tool-desc">Generate beautiful palettes by hitting the spacebar. Lock colors you love, regenerate the rest. Has contrast checker and palette from image.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Color Hunt</div>
+        <div class="tool-url">colorhunt.co</div>
+        <div class="tool-desc">Curated community palettes. Browse thousands of beautiful 4-color combinations. Best for finding starting inspiration.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Paletton</div>
+        <div class="tool-url">paletton.com</div>
+        <div class="tool-desc">Advanced color wheel with real-time preview of how palettes look in actual UI. Great for exploring adjacent and split-complementary options.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Illustrator Color Guide</div>
+        <div class="tool-url">Built into Illustrator</div>
+        <div class="tool-desc">Window → Color Guide. Creates harmony schemes from your selected color, right inside your working document. Adds to Swatches directly.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Huemint</div>
+        <div class="tool-url">huemint.com</div>
+        <div class="tool-desc">AI-powered palette generator that creates palettes specifically for website/app UI layouts. Shows colors in context.</div>
+      </div>
+    </div>
+
+    <h3>Extract a Palette from Any Photo</h3>
+    <p>One of the most powerful (and underused) features in color tools is <strong>palette extraction from images</strong>. Both Coolors and Adobe Color have a camera/upload icon that lets you drop in any photo — a product shot, a mood board image, a brand reference — and the tool automatically pulls out the dominant colors as a usable palette.</p>
+    <p>This is incredibly useful when: you have a product whose colors need to define the brand, you're matching a physical material or environment, or you simply found a photo with a mood you want to capture. Upload it, extract the palette, and use it as your starting point. All tools will give you the hex codes instantly.</p>
+    <div class="callout blue">
+      <p class="callout-title">📷 How to Use It</p>
+      <p>In <strong>Coolors.co</strong> — click "Image" in the top menu → upload your photo → it extracts 5 colors automatically. In <strong>Adobe Color</strong> — go to "Extract Theme" tab → upload image → choose from different extraction modes (Colorful, Bright, Muted, Deep, Dark).</p>
+    </div>
+
+    <div style="margin:32px 0;">
+      <div style="background:#1a1a1a;border-radius:12px;overflow:hidden;border:1px solid #333;">
+        <!-- Browser bar -->
+        <div style="background:#111;padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #333;">
+          <div style="display:flex;gap:5px;">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840;"></div>
+          </div>
+          <div style="flex:1;background:#0a0a0a;border-radius:4px;padding:4px 12px;font-family:'DM Mono',monospace;font-size:10px;color:#666;">coolors.co/4361ee-e63946-f9c74f-43aa8b-f9f6f0</div>
+        </div>
+        <!-- Coolors header -->
+        <div style="background:#111;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;">
+          <div style="font-family:'DM Mono',monospace;font-size:12px;color:#fff;letter-spacing:2px;">coolors</div>
+          <div style="display:flex;gap:8px;">
+            <div style="background:#222;border-radius:4px;padding:5px 10px;font-family:'DM Mono',monospace;font-size:10px;color:#aaa;">Export</div>
+            <div style="background:#4361ee;border-radius:4px;padding:5px 10px;font-family:'DM Mono',monospace;font-size:10px;color:#fff;">Save</div>
+          </div>
+        </div>
+        <!-- Color strips -->
+        <div style="display:flex;height:200px;">
+          <!-- Color 1 -->
+          <div style="flex:1;background:#4361ee;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:16px;gap:8px;position:relative;">
+            <div style="position:absolute;top:12px;background:rgba(0,0,0,.3);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px;">🔒</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.9);letter-spacing:1px;">4361EE</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);">Brand Blue</div>
+          </div>
+          <!-- Color 2 -->
+          <div style="flex:1;background:#e63946;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:16px;gap:8px;">
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.9);letter-spacing:1px;">E63946</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);">Accent Red</div>
+          </div>
+          <!-- Color 3 -->
+          <div style="flex:1;background:#f9c74f;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:16px;gap:8px;">
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(0,0,0,.6);letter-spacing:1px;">F9C74F</div>
+            <div style="font-size:10px;color:rgba(0,0,0,.4);">Warm Yellow</div>
+          </div>
+          <!-- Color 4 -->
+          <div style="flex:1;background:#43aa8b;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:16px;gap:8px;">
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.9);letter-spacing:1px;">43AA8B</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);">Success Green</div>
+          </div>
+          <!-- Color 5 -->
+          <div style="flex:1;background:#f9f6f0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:16px;gap:8px;">
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(0,0,0,.5);letter-spacing:1px;">F9F6F0</div>
+            <div style="font-size:10px;color:rgba(0,0,0,.3);">Warm White</div>
+          </div>
+        </div>
+        <!-- Bottom bar -->
+        <div style="background:#111;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #222;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:#555;">Press <span style="background:#222;padding:2px 6px;border-radius:3px;color:#aaa;">SPACE</span> to generate · <span style="background:#222;padding:2px 6px;border-radius:3px;color:#aaa;">🔒</span> to lock a color</div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:#4361ee;">5 colors · Saved</div>
+        </div>
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;text-align:center;letter-spacing:1px;">COOLORS.CO — Hit spacebar to generate, lock what you love, keep generating</p>
+    </div>
+
+    <div class="callout green">
+      <p class="callout-title">🎯 Where to Start Right Now</p>
+      <p>Open <strong>coolors.co</strong>, hit the spacebar 10 times, lock any color you love, and keep hitting spacebar. Within 5 minutes you'll have a starting palette. Then bring it into <strong>color.adobe.com</strong> to check contrast and refine the harmony. That's the whole workflow.</p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="section" id="s13">
+    <p class="section-label">13 — In Practice</p>
+    <h2>Applying Color Theory in Adobe Illustrator</h2>
+    <p>Knowing color theory is step one. Applying it inside your actual design tool — without switching back and forth to websites — is what makes you fast and professional. Illustrator has a complete color system built in, and most designers never fully use it.</p>
+
+    <h3>Step 1: Open the Color Guide Panel</h3>
+    <p>Go to <strong>Window → Color Guide</strong>. This is the most underused panel in Illustrator. Select any object that already has a color applied — the Color Guide instantly generates a full harmony scheme based on that color. It reads your current selection and builds the palette around it automatically.</p>
+    <p>At the top right of the panel you'll see which harmony rule it's using (Complementary, Triadic, Analogous, etc.). Click that dropdown to switch between all 6 harmony types instantly — the palette updates live as you switch.</p>
+
+    <div class="callout blue">
+      <p class="callout-title">💡 Why This Is Powerful</p>
+      <p>If you already have a brand color applied to an element, the Color Guide will tell you <em>exactly</em> which colors harmonize with it — inside Illustrator, without leaving your document. No copy-pasting hex codes from external websites needed.</p>
+    </div>
+
+    <h3>Step 2: Open the Live Color Wheel</h3>
+    <p>At the bottom of the Color Guide panel, click the small <strong>"Edit Colors"</strong> icon (it looks like a color wheel). This opens the full interactive color wheel directly inside Illustrator — the same wheel you've been studying in this guide, but now it's live and connected to your document.</p>
+    <p>Here you can see your color scheme plotted on the wheel in real time. Drag the handles to shift colors. Switch between harmony types using the icons at the top of the dialog. The colors in your document update as you drag.</p>
+
+    <h3>Step 3: Fine-Tune with HSB Sliders</h3>
+    <p>In the Edit Colors dialog, below the wheel, you have <strong>HSB sliders</strong> (Hue, Saturation, Brightness) for each individual color. This is where you apply everything from Section 03 of this guide — lower the saturation for a softer tone, reduce brightness for a shade, or bump saturation up for a more electric accent. You can tweak each color independently without breaking the harmony relationship.</p>
+
+    <h3>Step 4: Unlink Harmony When Needed</h3>
+    <p>By default, all colors in the wheel move together — rotating the wheel shifts the entire scheme at once, maintaining the harmony relationship. But sometimes you need to adjust one color without affecting the others. Click the <strong>"Unlink Harmony"</strong> button (chain link icon) and each handle becomes independent. Now you can fine-tune one color freely.</p>
+
+    <div class="callout gold">
+      <p class="callout-title">⚠️ Important</p>
+      <p>Unlinking is great for fine-tuning but use it carefully — once unlinked, you're no longer following a mathematically pure harmony. That's fine if you know what you're doing, but beginners should keep colors linked until they're comfortable with why they're breaking the rule.</p>
+    </div>
+
+    <h3>Step 5: Save to Swatches</h3>
+    <p>Once you're happy with your scheme, click the <strong>"New Color Group"</strong> icon in the Color Guide panel (or the button in the Edit Colors dialog), name your group, click OK. Your entire palette instantly appears in the <strong>Swatches panel</strong> (Window → Swatches) as a saved, named group.</p>
+    <p>From now on, every designer working on the same document can access the exact palette from Swatches — one click, exact color, no guessing. This is how professional brand consistency is maintained inside Illustrator.</p>
+
+    <div class="callout green">
+      <p class="callout-title">✅ The Full Illustrator Color Workflow</p>
+      <p>Select object with brand color → Open Color Guide → Pick harmony type → Click Edit Colors → Fine-tune on the wheel with HSB sliders → Unlink only if needed → New Color Group → OK → Done. Your palette lives in Swatches forever.</p>
+    </div>
+
+    <h3>You Don't Have to Use Default Schemes</h3>
+    <p>One thing many people miss: the harmony presets are starting points, not rules. In the Edit Colors wheel, you can manually position the handles however you want — creating a custom scheme that follows no preset rule but still looks great. The knowledge from this entire guide (what complementary means, why analogous works, how contrast behaves) is what lets you make intelligent custom adjustments. The tool gives you freedom; your knowledge gives you direction.</p>
+
+    <div style="margin:32px 0;">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        
+        <!-- Panel 1: Color Guide -->
+        <div style="flex:1;min-width:200px;background:#1e1e1e;border-radius:10px;border:1px solid #333;overflow:hidden;font-family:'DM Mono',monospace;">
+          <div style="background:#2a2a2a;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #333;">
+            <div style="font-size:10px;color:#aaa;letter-spacing:1px;">Color Guide</div>
+            <div style="font-size:10px;color:#666;">≡</div>
+          </div>
+          <!-- Harmony rule selector -->
+          <div style="padding:10px 12px;border-bottom:1px solid #2a2a2a;">
+            <div style="background:#111;border:1px solid #444;border-radius:4px;padding:5px 8px;display:flex;align-items:center;justify-content:space-between;">
+              <div style="font-size:10px;color:#6b8cf5;">Triadic</div>
+              <div style="font-size:10px;color:#666;">▼</div>
+            </div>
+          </div>
+          <!-- Base color row -->
+          <div style="padding:8px 12px;border-bottom:1px solid #2a2a2a;">
+            <div style="font-size:9px;color:#666;margin-bottom:5px;letter-spacing:1px;">BASE COLOR</div>
+            <div style="display:flex;gap:4px;">
+              <div style="width:32px;height:24px;border-radius:3px;background:#4361ee;border:2px solid #fff;"></div>
+            </div>
+          </div>
+          <!-- Harmony colors -->
+          <div style="padding:8px 12px;border-bottom:1px solid #2a2a2a;">
+            <div style="font-size:9px;color:#666;margin-bottom:5px;letter-spacing:1px;">HARMONY COLORS</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="display:flex;gap:3px;">
+                <div style="flex:1;height:20px;border-radius:2px;background:#d6e0fd;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#a8bbfa;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#4361ee;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#2a40b0;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#152070;"></div>
+              </div>
+              <div style="display:flex;gap:3px;">
+                <div style="flex:1;height:20px;border-radius:2px;background:#fdf5e0;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#fbe098;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#f9c74f;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#c99a20;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#8a6610;"></div>
+              </div>
+              <div style="display:flex;gap:3px;">
+                <div style="flex:1;height:20px;border-radius:2px;background:#fde8e9;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#f5a3a8;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#e63946;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#b01a25;"></div>
+                <div style="flex:1;height:20px;border-radius:2px;background:#700a10;"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Bottom button -->
+          <div style="padding:8px 12px;display:flex;justify-content:flex-end;">
+            <div style="background:#4361ee;border-radius:3px;padding:4px 10px;font-size:9px;color:#fff;letter-spacing:1px;">Edit Colors →</div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Edit Colors / Color Wheel -->
+        <div style="flex:1.5;min-width:260px;background:#1e1e1e;border-radius:10px;border:1px solid #333;overflow:hidden;font-family:'DM Mono',monospace;">
+          <div style="background:#2a2a2a;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #333;">
+            <div style="font-size:10px;color:#aaa;letter-spacing:1px;">Edit Colors</div>
+            <div style="display:flex;gap:8px;">
+              <div style="font-size:10px;color:#555;">Smooth ▼</div>
+              <div style="font-size:10px;color:#666;">✕</div>
+            </div>
+          </div>
+          <div style="padding:14px;display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;">
+            <!-- Color wheel SVG -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+              <svg width="140" height="140" viewBox="0 0 140 140">
+                <g transform="translate(70,70)">
+                  <path d="M0,0 L0,-56 A56,56,0,0,1,28,-48.5 Z" fill="#e63946"/>
+                  <path d="M0,0 L28,-48.5 A56,56,0,0,1,48.5,-28 Z" fill="#f4722b"/>
+                  <path d="M0,0 L48.5,-28 A56,56,0,0,1,56,0 Z" fill="#f9a825"/>
+                  <path d="M0,0 L56,0 A56,56,0,0,1,48.5,28 Z" fill="#f9c74f"/>
+                  <path d="M0,0 L48.5,28 A56,56,0,0,1,28,48.5 Z" fill="#d4e157"/>
+                  <path d="M0,0 L28,48.5 A56,56,0,0,1,0,56 Z" fill="#90be6d"/>
+                  <path d="M0,0 L0,56 A56,56,0,0,1,-28,48.5 Z" fill="#43aa8b"/>
+                  <path d="M0,0 L-28,48.5 A56,56,0,0,1,-48.5,28 Z" fill="#277da1"/>
+                  <path d="M0,0 L-48.5,28 A56,56,0,0,1,-56,0 Z" fill="#4361ee"/>
+                  <path d="M0,0 L-56,0 A56,56,0,0,1,-48.5,-28 Z" fill="#7209b7"/>
+                  <path d="M0,0 L-48.5,-28 A56,56,0,0,1,-28,-48.5 Z" fill="#9b5de5"/>
+                  <path d="M0,0 L-28,-48.5 A56,56,0,0,1,0,-56 Z" fill="#c77dff"/>
+                  <circle r="22" fill="#1e1e1e"/>
+                </g>
+                <!-- Triadic handles -->
+                <circle cx="70" cy="14" r="6" fill="#4361ee" stroke="white" stroke-width="2"/>
+                <circle cx="118" cy="97" r="6" fill="#f9c74f" stroke="white" stroke-width="2"/>
+                <circle cx="22" cy="97" r="6" fill="#e63946" stroke="white" stroke-width="2"/>
+                <!-- Lines connecting handles -->
+                <line x1="70" y1="14" x2="118" y2="97" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="118" y1="97" x2="22" y2="97" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="22" y1="97" x2="70" y2="14" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-dasharray="3,3"/>
+              </svg>
+              <div style="font-size:9px;color:#555;letter-spacing:1px;">TRIADIC — 120° apart</div>
+            </div>
+            <!-- Right side: sliders + actions -->
+            <div style="flex:1;min-width:100px;display:flex;flex-direction:column;gap:10px;">
+              <div style="font-size:9px;color:#666;letter-spacing:1px;margin-bottom:2px;">SELECTED: BRAND BLUE</div>
+              <!-- H slider -->
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:9px;color:#888;">H</span><span style="font-size:9px;color:#f9c74f;">228°</span></div>
+                <div style="height:8px;border-radius:4px;background:linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);position:relative;">
+                  <div style="position:absolute;left:63%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#fff;border:1px solid #333;"></div>
+                </div>
+              </div>
+              <!-- S slider -->
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:9px;color:#888;">S</span><span style="font-size:9px;color:#f9c74f;">70%</span></div>
+                <div style="height:8px;border-radius:4px;background:linear-gradient(to right,#9e9e9e,#4361ee);position:relative;">
+                  <div style="position:absolute;left:70%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#fff;border:1px solid #333;"></div>
+                </div>
+              </div>
+              <!-- B slider -->
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:9px;color:#888;">B</span><span style="font-size:9px;color:#f9c74f;">93%</span></div>
+                <div style="height:8px;border-radius:4px;background:linear-gradient(to right,#000,#4361ee);position:relative;">
+                  <div style="position:absolute;left:93%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#fff;border:1px solid #333;"></div>
+                </div>
+              </div>
+              <!-- Buttons -->
+              <div style="display:flex;gap:5px;margin-top:4px;">
+                <div style="flex:1;background:#333;border-radius:3px;padding:5px;text-align:center;font-size:9px;color:#aaa;">Unlink 🔗</div>
+                <div style="flex:1;background:#4361ee;border-radius:3px;padding:5px;text-align:center;font-size:9px;color:#fff;">New Group</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;text-align:center;letter-spacing:1px;">ILLUSTRATOR WORKFLOW — Color Guide panel (left) → Edit Colors wheel (right) → Save to Swatches</p>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="section" id="summary">
+    <p class="section-label">Summary</p>
+    <h2>The Complete Color Theory Cheatsheet</h2>
+    <p>Everything you've learned in this guide, distilled to a one-page reference:</p>
+
+    <table class="brand-table">
+      <thead><tr><th>Concept</th><th>What it means</th><th>Use it when...</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Color Wheel</strong></td><td>Map of all color relationships</td><td>Choosing any palette — start here always</td></tr>
+        <tr><td><strong>Complementary</strong></td><td>Opposite colors, max contrast</td><td>You want bold, high-energy, attention-grabbing</td></tr>
+        <tr><td><strong>Analogous</strong></td><td>Adjacent colors, harmonious</td><td>You want calm, natural, elegant</td></tr>
+        <tr><td><strong>Monochromatic</strong></td><td>One hue, varied brightness/sat</td><td>You want sophistication or safe simplicity</td></tr>
+        <tr><td><strong>Tints/Shades</strong></td><td>Lighter/darker versions of a hue</td><td>Building a full palette with depth</td></tr>
+        <tr><td><strong>Saturation</strong></td><td>Intensity of color</td><td>Low = calm/natural; High = energetic/urgent</td></tr>
+        <tr><td><strong>Contrast Ratio</strong></td><td>Difference between text/bg colors</td><td>Always — minimum 4.5:1 for accessibility</td></tr>
+        <tr><td><strong>60-30-10</strong></td><td>Proportion rule for color use</td><td>Laying out any design or brand system</td></tr>
+        <tr><td><strong>Hex Code</strong></td><td>#RRGGBB address for any color</td><td>Sharing exact colors with developers/printers</td></tr>
+        <tr><td><strong>Color Psychology</strong></td><td>Emotional associations of each hue</td><td>Choosing brand colors that resonate</td></tr>
+        <tr><td><strong>Nested Squares Test</strong></td><td>Check colors in context, not isolation</td><td>Before finalizing any palette</td></tr>
+        <tr><td><strong>Illustrator Color Guide</strong></td><td>Live harmony schemes inside Illustrator</td><td>Applying palettes directly in your document</td></tr>
+        <tr><td><strong>16.7 Million Colors</strong></td><td>256 × 256 × 256 RGB combinations</td><td>Understanding why hex codes look the way they do</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Color Theory Complete Guide · Built for Teams &amp; Brands</p>
+  <p style="margin-top:8px">Share this with your team · Customize with your brand's palette</p>
+</footer>
+
+<script>
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const docEl = document.documentElement;
+    const scrollTop = docEl.scrollTop || document.body.scrollTop;
+    const scrollHeight = docEl.scrollHeight - docEl.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    document.getElementById('progressFill').style.width = progress + '%';
+  });
+</script>
+
+</body>
+</html>
